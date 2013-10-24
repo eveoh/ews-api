@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the view settings in a folder search operation.
  */
+@SuppressWarnings("ALL")
 public final class FolderView extends PagedView {
 
     /**

@@ -12,6 +12,7 @@ import java.net.URI;
 /**
  * The Class SubscribeToPushNotificationsRequest.
  */
+@SuppressWarnings("ALL")
 class SubscribeToPushNotificationsRequest extends SubscribeRequest<PushSubscription> {
 
     /**

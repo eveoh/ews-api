@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents an operation to delete an existing rule.
  */
+@SuppressWarnings("ALL")
 public final class DeleteRuleOperation extends RuleOperation {
     /**
      * Id of the inbox rule to delete.

@@ -3,6 +3,7 @@ package microsoft.exchange.webservices.data;
 import java.io.IOException;
 import java.util.concurrent.Callable;
 
+@SuppressWarnings("ALL")
 public class CallableMethod implements Callable {
     HttpWebRequest request;
 

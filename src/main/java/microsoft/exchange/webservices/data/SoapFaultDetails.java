@@ -13,6 +13,7 @@ import java.util.Map;
 /**
  * Represents SoapFault details.
  */
+@SuppressWarnings("ALL")
 class SoapFaultDetails {
 
     /**

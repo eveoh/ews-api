@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an ExpandGroup request.
  */
+@SuppressWarnings("ALL")
 public class ExpandGroupRequest extends MultiResponseServiceRequest<ExpandGroupResponse> {
 
     /**

@@ -14,6 +14,7 @@ import java.util.*;
  * Represents a set of item or folder properties. Property sets are used to indicate what properties of an item or
  * folder should be loaded when binding to an existing item or folder or when loading an item or folder's properties.
  */
+@SuppressWarnings("ALL")
 public final class PropertySet implements ISelfValidate, Iterable<PropertyDefinitionBase> {
 
     /**

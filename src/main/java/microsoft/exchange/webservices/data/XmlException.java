@@ -1,5 +1,6 @@
 package microsoft.exchange.webservices.data;
 
+@SuppressWarnings("ALL")
 public class XmlException extends Exception {
 
     /**

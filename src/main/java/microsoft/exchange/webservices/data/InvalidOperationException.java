@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class InvalidOperationException.
  */
+@SuppressWarnings("ALL")
 public class InvalidOperationException extends Exception {
 
     /**

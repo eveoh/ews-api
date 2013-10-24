@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a suggested name resolution.
  */
+@SuppressWarnings("ALL")
 public final class NameResolution {
 
     /**

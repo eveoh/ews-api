@@ -14,6 +14,7 @@ import java.util.Date;
 /**
  * Represents a time period.
  */
+@SuppressWarnings("ALL")
 public class TimeWindow implements ISelfValidate {
 
     /**

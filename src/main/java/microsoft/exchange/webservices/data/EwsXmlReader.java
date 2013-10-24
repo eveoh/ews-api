@@ -17,6 +17,7 @@ import java.io.*;
 /**
  * Defines the EwsXmlReader class.
  */
+@SuppressWarnings("ALL")
 class EwsXmlReader {
 
     /**

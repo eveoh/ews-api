@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Represents a list a abstracted item Ids.
  */
+@SuppressWarnings("ALL")
 class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
 
     /**

@@ -11,6 +11,7 @@ import java.util.EnumSet;
 /**
  * Represents the definition for the meeting time zone property.
  */
+@SuppressWarnings("ALL")
 class MeetingTimeZonePropertyDefinition extends PropertyDefinition {
 
     /**

@@ -16,6 +16,7 @@ import java.util.Vector;
  *
  * @param <TResponse> The type of response stored in the list.
  */
+@SuppressWarnings("ALL")
 public final class ServiceResponseCollection<TResponse extends ServiceResponse> implements Iterable<TResponse> {
 
     /**

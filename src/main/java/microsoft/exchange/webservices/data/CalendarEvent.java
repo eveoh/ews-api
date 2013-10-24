@@ -11,6 +11,7 @@ import java.util.Date;
 /**
  * Represents an event in a calendar.
  */
+@SuppressWarnings("ALL")
 public final class CalendarEvent extends ComplexProperty {
 
     /**

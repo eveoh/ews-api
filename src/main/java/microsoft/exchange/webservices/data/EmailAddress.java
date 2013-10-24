@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an e-mail address.
  */
+@SuppressWarnings("ALL")
 public class EmailAddress extends ComplexProperty implements ISearchStringProvider {
 
     // SMTP routing type.

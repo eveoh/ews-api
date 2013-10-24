@@ -13,6 +13,7 @@ import java.util.Iterator;
 /**
  * Represents the results of an ExpandGroup operation.
  */
+@SuppressWarnings("ALL")
 public final class ExpandGroupResults implements Iterable<EmailAddress> {
 
     /**

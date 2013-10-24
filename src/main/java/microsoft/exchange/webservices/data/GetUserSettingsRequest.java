@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Represents a GetUserSettings request.
  */
+@SuppressWarnings("ALL")
 class GetUserSettingsRequest extends AutodiscoverRequest {
 
     /**

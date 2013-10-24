@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the Id of an Exchange item.
  */
+@SuppressWarnings("ALL")
 public class ItemId extends ServiceId {
 
     /**

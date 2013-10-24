@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the Id of a public folder expressed in a specific format.
  */
+@SuppressWarnings("ALL")
 public class AlternatePublicFolderId extends AlternateIdBase {
 
     /**

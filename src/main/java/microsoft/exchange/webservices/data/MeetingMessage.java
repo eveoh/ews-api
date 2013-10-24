@@ -13,6 +13,7 @@ package microsoft.exchange.webservices.data;
 
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.MeetingMessage)
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public class MeetingMessage extends EmailMessage {
 
     /**

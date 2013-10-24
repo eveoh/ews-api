@@ -12,6 +12,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a time zone period transition that occurs on a specific day of a specific month.
  */
+@SuppressWarnings("ALL")
 class AbsoluteDayOfMonthTransition extends AbsoluteMonthTransition {
 
     /**

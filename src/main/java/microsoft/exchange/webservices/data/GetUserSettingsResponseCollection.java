@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a collection of responses to GetUserSettings.
  */
+@SuppressWarnings("ALL")
 public final class GetUserSettingsResponseCollection extends AutodiscoverResponseCollection<GetUserSettingsResponse> {
 
     /**

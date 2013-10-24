@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Message)
+@SuppressWarnings("ALL")
 public class EmailMessage extends Item {
 
     /**

@@ -15,6 +15,7 @@ package microsoft.exchange.webservices.data;
  *            member holds the actual member, a lock object, a boolean flag and a delegate. That can turn into a whole
  *            lot of overhead
  */
+@SuppressWarnings("ALL")
 class LazyMember<T> {
 
     /**

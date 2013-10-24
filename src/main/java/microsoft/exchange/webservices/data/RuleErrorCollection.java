@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a collection of rule validation errors.
  */
+@SuppressWarnings("ALL")
 public final class RuleErrorCollection extends ComplexPropertyCollection<RuleError> {
 
     /**

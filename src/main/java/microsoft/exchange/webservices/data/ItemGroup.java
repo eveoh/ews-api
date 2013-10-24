@@ -15,6 +15,7 @@ import java.util.List;
  *
  * @param <TItem> the generic type
  */
+@SuppressWarnings("ALL")
 public final class ItemGroup<TItem extends Item> {
 
     /**

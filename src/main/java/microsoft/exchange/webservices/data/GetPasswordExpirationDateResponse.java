@@ -8,6 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.Date;
 
+@SuppressWarnings("ALL")
 public class GetPasswordExpirationDateResponse extends ServiceResponse {
 
     private Date passwordExpirationDate;

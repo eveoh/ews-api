@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class FormatException.
  */
+@SuppressWarnings("ALL")
 public class FormatException extends Exception {
 
     /**

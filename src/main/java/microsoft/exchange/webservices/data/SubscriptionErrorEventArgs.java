@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Provides data to a StreamingSubscriptionConnection's OnSubscriptionError and OnDisconnect events.
  */
+@SuppressWarnings("ALL")
 public class SubscriptionErrorEventArgs { //TODO extends EventObject {
 
     private StreamingSubscription subscription;

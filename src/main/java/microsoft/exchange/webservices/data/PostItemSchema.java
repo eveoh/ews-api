@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * Represents the schema for post items.
  */
 @Schema
+@SuppressWarnings("ALL")
 public final class PostItemSchema extends ItemSchema {
 
     /**

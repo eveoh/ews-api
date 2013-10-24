@@ -11,6 +11,7 @@ import java.util.EnumSet;
 /**
  * Represents permission set property definition.
  */
+@SuppressWarnings("ALL")
 class PermissionSetPropertyDefinition extends ComplexPropertyDefinitionBase {
 
     /**

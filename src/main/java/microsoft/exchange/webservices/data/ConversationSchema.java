@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * Represents the schema for Conversation.
  */
 @Schema
+@SuppressWarnings("ALL")
 public class ConversationSchema extends ServiceObjectSchema {
 
     /**

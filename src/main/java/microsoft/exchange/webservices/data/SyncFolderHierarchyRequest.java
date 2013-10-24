@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a SyncFolderHierarchy request.
  */
+@SuppressWarnings("ALL")
 class SyncFolderHierarchyRequest extends MultiResponseServiceRequest<SyncFolderHierarchyResponse> {
 
     /**

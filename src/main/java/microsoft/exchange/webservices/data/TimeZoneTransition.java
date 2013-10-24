@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents the base class for all time zone transitions.
  */
+@SuppressWarnings("ALL")
 class TimeZoneTransition extends ComplexProperty {
 
     /**

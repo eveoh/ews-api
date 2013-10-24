@@ -16,6 +16,7 @@ import java.util.Enumeration;
  * Represents an item's attachment collection.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class AttachmentCollection extends ComplexPropertyCollection<Attachment> implements IOwnedProperty {
 
     // The item owner that owns this attachment collection

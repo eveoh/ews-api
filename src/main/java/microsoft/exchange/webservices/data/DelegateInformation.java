@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Represents the results of a GetDelegates operation.
  */
+@SuppressWarnings("ALL")
 public final class DelegateInformation {
 
     /**

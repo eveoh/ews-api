@@ -12,6 +12,7 @@ import java.util.Date;
 /**
  * Encapsulates information on the deleted occurrence of a recurring appointment.
  */
+@SuppressWarnings("ALL")
 public class DeletedOccurrenceInfo extends ComplexProperty {
     /**
      * The original start date and time of the deleted occurrence. The EWS schema contains a Start property for deleted

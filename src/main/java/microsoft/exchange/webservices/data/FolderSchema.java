@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * Represents the schema for folders.
  */
 @Schema
+@SuppressWarnings("ALL")
 public class FolderSchema extends ServiceObjectSchema {
 
     /**

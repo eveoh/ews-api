@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * Represents the schema for contact groups.
  */
 @Schema
+@SuppressWarnings("ALL")
 public class ContactGroupSchema extends ItemSchema {
 
 

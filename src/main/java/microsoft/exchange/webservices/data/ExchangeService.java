@@ -16,6 +16,7 @@ import java.util.*;
 /**
  * Represents a binding to the Exchange Web Services.
  */
+@SuppressWarnings("ALL")
 public final class ExchangeService extends ExchangeServiceBase implements IAutodiscoverRedirectionUrl {
 
     /**

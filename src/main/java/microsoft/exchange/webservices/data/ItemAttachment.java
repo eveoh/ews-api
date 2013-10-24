@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Represents an item attachment.
  */
+@SuppressWarnings("ALL")
 public class ItemAttachment extends Attachment implements IServiceObjectChangedDelegate {
 
     /**

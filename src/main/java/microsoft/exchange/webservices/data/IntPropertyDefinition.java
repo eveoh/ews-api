@@ -11,6 +11,7 @@ import java.util.EnumSet;
 /**
  * Represents Integer property defintion.
  */
+@SuppressWarnings("ALL")
 class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
 
     /**

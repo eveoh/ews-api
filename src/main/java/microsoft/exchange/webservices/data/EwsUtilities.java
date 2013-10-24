@@ -26,6 +26,7 @@ import java.util.regex.Pattern;
 /**
  * EWS utilities.
  */
+@SuppressWarnings("ALL")
 class EwsUtilities {
 
     /**
@@ -172,7 +173,7 @@ class EwsUtilities {
 
     	
    /* 	InputStream inputStream = new FileInputStream ("D:\\EWS ManagedAPI sp2\\Rp\\xml\\useravailrequest.xml");
-    	
+
     	 byte buf[]=new byte[1024];
     	 int len;
     	 while((len=inputStream.read(buf))>0)

@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the Unified Messaging functionalities.
  */
+@SuppressWarnings("ALL")
 public final class UnifiedMessaging {
 
     /**

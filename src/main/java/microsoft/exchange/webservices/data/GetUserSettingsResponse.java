@@ -14,6 +14,7 @@ import java.util.Map;
 /**
  * Represents the response to a GetUsersSettings call for an individual user.
  */
+@SuppressWarnings("ALL")
 public final class GetUserSettingsResponse extends AutodiscoverResponse {
 
     /**

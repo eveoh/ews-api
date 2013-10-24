@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a change on an item as returned by a synchronization operation.
  */
+@SuppressWarnings("ALL")
 public final class ItemChange extends Change {
 
     /**

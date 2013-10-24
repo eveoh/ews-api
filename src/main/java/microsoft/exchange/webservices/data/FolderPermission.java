@@ -15,6 +15,7 @@ import java.util.Map.Entry;
 /**
  * Represents a permission on a folder.
  */
+@SuppressWarnings("ALL")
 public final class FolderPermission extends ComplexProperty implements IComplexPropertyChangedDelegate {
 
 

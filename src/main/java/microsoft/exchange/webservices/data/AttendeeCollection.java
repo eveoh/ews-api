@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a collection of attendees.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class AttendeeCollection extends ComplexPropertyCollection<Attendee> {
 
     /**

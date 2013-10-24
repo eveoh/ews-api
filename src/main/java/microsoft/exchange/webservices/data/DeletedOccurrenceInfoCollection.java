@@ -11,6 +11,7 @@ package microsoft.exchange.webservices.data;
  * Represents a collection of deleted occurrence objects.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class DeletedOccurrenceInfoCollection extends ComplexPropertyCollection<DeletedOccurrenceInfo> {
 
     /**

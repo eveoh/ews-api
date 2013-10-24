@@ -12,6 +12,7 @@ import java.util.*;
 /**
  * Represents an ordered collection of property definitions qualified with a sort direction.
  */
+@SuppressWarnings("ALL")
 public final class OrderByCollection implements Iterable<Map<PropertyDefinitionBase, SortDirection>> {
 
     /**

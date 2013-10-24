@@ -15,6 +15,7 @@ import java.util.Iterator;
  *
  * @param <TItem> The type of item returned by the search operation.
  */
+@SuppressWarnings("ALL")
 public final class FindItemsResults<TItem extends Item> implements Iterable<Item> {
 
     /**

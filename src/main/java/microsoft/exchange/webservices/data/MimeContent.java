@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents the MIME content of an item.
  */
+@SuppressWarnings("ALL")
 public final class MimeContent extends ComplexProperty {
 
     /**

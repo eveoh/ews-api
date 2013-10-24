@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an error that occurs when a call to the CreateAttachment web method fails.
  */
+@SuppressWarnings("ALL")
 public final class CreateAttachmentException extends ServiceRemoteException {// extends
 // BatchServiceResponseException<CreateAttachmentResponse> 
 

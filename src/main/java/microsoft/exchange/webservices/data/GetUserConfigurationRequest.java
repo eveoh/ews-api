@@ -11,6 +11,7 @@ import java.util.EnumSet;
 /**
  * The Class GetUserConfigurationRequest.
  */
+@SuppressWarnings("ALL")
 class GetUserConfigurationRequest extends MultiResponseServiceRequest<GetUserConfigurationResponse> {
 
     /**

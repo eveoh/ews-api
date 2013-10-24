@@ -13,6 +13,7 @@ import java.util.StringTokenizer;
 /**
  * Represents a DNS SRV Record.
  */
+@SuppressWarnings("ALL")
 class DnsSrvRecord extends DnsRecord {
     /*
 	 * The string representing the target host

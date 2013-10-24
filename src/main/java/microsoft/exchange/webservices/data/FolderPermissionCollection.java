@@ -13,6 +13,7 @@ import java.util.Iterator;
 /**
  * Represents a collection of folder permissions.
  */
+@SuppressWarnings("ALL")
 public final class FolderPermissionCollection extends ComplexPropertyCollection<FolderPermission> {
 
     /**

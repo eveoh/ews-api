@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a folder containing task items.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.TasksFolder)
+@SuppressWarnings("ALL")
 public class TasksFolder extends Folder {
 
     /**

@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a "pull" Subscribe request.
  */
+@SuppressWarnings("ALL")
 class SubscribeToPullNotificationsRequest extends SubscribeRequest<PullSubscription> {
 
     /**

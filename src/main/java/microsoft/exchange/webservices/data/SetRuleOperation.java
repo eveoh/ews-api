@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an operation to update an existing rule.
  */
+@SuppressWarnings("ALL")
 public class SetRuleOperation extends RuleOperation {
     /**
      * Inbox rule to be updated.

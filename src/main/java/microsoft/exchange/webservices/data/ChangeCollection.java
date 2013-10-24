@@ -15,6 +15,7 @@ import java.util.List;
  *
  * @param <TChange> the generic type
  */
+@SuppressWarnings("ALL")
 public final class ChangeCollection<TChange extends Change> implements Iterable<TChange> {
 
     /**

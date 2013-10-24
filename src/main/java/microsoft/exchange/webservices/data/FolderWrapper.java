@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a folder Id provided by a Folder object.
  */
+@SuppressWarnings("ALL")
 class FolderWrapper extends AbstractFolderIdWrapper {
 
     /**

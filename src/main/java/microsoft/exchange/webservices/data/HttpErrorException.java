@@ -4,6 +4,7 @@ package microsoft.exchange.webservices.data;
 /**
  * User: nwoodham Date: 3/8/11 Time: 5:30 PM
  */
+@SuppressWarnings("ALL")
 public class HttpErrorException extends Exception {
     private final int code;
 

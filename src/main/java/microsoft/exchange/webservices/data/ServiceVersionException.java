@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an error that occurs when a request cannot be handled due to a service version mismatch.
  */
+@SuppressWarnings("ALL")
 public final class ServiceVersionException extends ServiceLocalException {
 
     /**

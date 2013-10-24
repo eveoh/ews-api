@@ -17,6 +17,7 @@ import java.util.List;
  * ConversationSchema class.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Conversation)
+@SuppressWarnings("ALL")
 public class Conversation extends ServiceObject {
 
     /**

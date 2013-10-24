@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a remote service exception that has a single response.
  */
+@SuppressWarnings("ALL")
 public class ServiceResponseException extends ServiceRemoteException {
 
     /**

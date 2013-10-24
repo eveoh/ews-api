@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /**
  * Represents a set of helper methods for performing string comparisons.
  */
+@SuppressWarnings("ALL")
 class ComparisonHelpers {
 
     /**

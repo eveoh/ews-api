@@ -16,6 +16,7 @@ import java.util.ListIterator;
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Item)
+@SuppressWarnings("ALL")
 public class Item extends ServiceObject {
 
     /**

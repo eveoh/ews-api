@@ -15,6 +15,7 @@ import java.util.EnumSet;
  * @param <T> the generic type
  * @Param T Property type.
  */
+@SuppressWarnings("ALL")
 class GenericPropertyDefinition<TPropertyValue> extends TypedPropertyDefinition {
 
     private Class<TPropertyValue> instance;

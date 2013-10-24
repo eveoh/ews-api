@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an error from a GetDomainSettings request.
  */
+@SuppressWarnings("ALL")
 public final class DomainSettingError {
 
     /**

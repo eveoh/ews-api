@@ -11,6 +11,7 @@ import java.util.Date;
 /**
  * Represents an event that applies to an item.
  */
+@SuppressWarnings("ALL")
 public final class ItemEvent extends NotificationEvent {
 
     /**

@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class ArgumentOutOfRangeException.
  */
+@SuppressWarnings("ALL")
 public class ArgumentOutOfRangeException extends Exception {
 
     /**

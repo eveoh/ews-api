@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Class that holds all constants.
  */
+@SuppressWarnings("ALL")
 class EWSConstants {
     /*
 	 * Represents SRV record.

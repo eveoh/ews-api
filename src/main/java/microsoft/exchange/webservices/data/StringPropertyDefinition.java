@@ -12,6 +12,7 @@ import java.util.EnumSet;
 /**
  * Represents String property definition.
  */
+@SuppressWarnings("ALL")
 class StringPropertyDefinition extends TypedPropertyDefinition {
 
     /**

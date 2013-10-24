@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a folder containing appointments.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.CalendarFolder)
+@SuppressWarnings("ALL")
 public class CalendarFolder extends Folder {
 
     /**

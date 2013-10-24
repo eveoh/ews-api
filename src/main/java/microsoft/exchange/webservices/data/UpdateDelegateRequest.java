@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Represents an UpdateDelegate request.
  */
+@SuppressWarnings("ALL")
 public class UpdateDelegateRequest extends DelegateManagementRequestBase<DelegateManagementResponse> {
 
     /**

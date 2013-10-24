@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
 import java.io.ByteArrayOutputStream;
 import java.util.concurrent.Callable;
 
+@SuppressWarnings("ALL")
 class GetStream implements Callable {
     HttpWebRequest request;
     String mName = "";

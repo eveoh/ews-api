@@ -12,6 +12,7 @@ import java.util.Date;
 /**
  * Represents the date and time range within which messages have been received.
  */
+@SuppressWarnings("ALL")
 public final class RulePredicateDateRange extends ComplexProperty {
 
     /**

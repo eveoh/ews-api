@@ -11,6 +11,7 @@ import java.util.Date;
 /**
  * Represents an event that applies to a folder.
  */
+@SuppressWarnings("ALL")
 public class FolderEvent extends NotificationEvent {
 
     /**

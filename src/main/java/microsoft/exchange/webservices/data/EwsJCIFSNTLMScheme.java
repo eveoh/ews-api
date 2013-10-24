@@ -22,7 +22,7 @@ import java.io.IOException;
  * 4.x which requires AuthEngine to be overriden instead of AuthScheme.
  */
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings("ALL")
 public class EwsJCIFSNTLMScheme implements AuthScheme {
 
     /**

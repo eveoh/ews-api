@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class ResponseMessage.
  */
+@SuppressWarnings("ALL")
 public final class ResponseMessage extends ResponseObject<EmailMessage> {
 
     /**

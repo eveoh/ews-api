@@ -13,6 +13,7 @@ import java.util.Date;
 /**
  * Represents an availability time suggestion.
  */
+@SuppressWarnings("ALL")
 public final class TimeSuggestion extends ComplexProperty {
 
     /**

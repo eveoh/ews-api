@@ -15,6 +15,7 @@ import java.util.Date;
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.CalendarItem)
+@SuppressWarnings("ALL")
 public class Appointment extends Item implements ICalendarActionProvider {
 
     /**

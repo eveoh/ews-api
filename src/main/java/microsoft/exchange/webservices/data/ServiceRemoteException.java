@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an error that occurs when a service operation fails remotely.
  */
+@SuppressWarnings("ALL")
 public class ServiceRemoteException extends Exception {
 
     /**

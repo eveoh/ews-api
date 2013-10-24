@@ -18,6 +18,7 @@ import java.util.UUID;
 /**
  * Represents an entry in the MapiTypeConverter map.
  */
+@SuppressWarnings("ALL")
 class MapiTypeConverterMapEntry {
 
     /**

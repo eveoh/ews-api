@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the details of a calendar event as returned by the GetUserAvailability operation.
  */
+@SuppressWarnings("ALL")
 public final class CalendarEventDetails extends ComplexProperty {
 
     /**

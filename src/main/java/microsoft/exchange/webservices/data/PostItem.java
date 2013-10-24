@@ -15,6 +15,7 @@ import java.util.List;
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.PostItem)
+@SuppressWarnings("ALL")
 public final class PostItem extends Item {
 
     /**

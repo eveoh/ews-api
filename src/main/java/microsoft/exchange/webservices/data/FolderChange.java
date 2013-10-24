@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a change on a folder as returned by a synchronization operation.
  */
+@SuppressWarnings("ALL")
 public final class FolderChange extends Change {
     /**
      * Initializes a new instance of FolderChange.

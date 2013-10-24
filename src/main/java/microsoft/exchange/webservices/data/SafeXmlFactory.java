@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.io.Reader;
 
 
+@SuppressWarnings("ALL")
 public class SafeXmlFactory {
     public static XMLInputFactory factory = XMLInputFactory.newInstance();
 

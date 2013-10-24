@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Defines DnsException class.
  */
+@SuppressWarnings("ALL")
 class DnsException extends Exception {
 
     /**

@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Represents a list a abstracted folder Ids.
  */
+@SuppressWarnings("ALL")
 class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
 
     /**

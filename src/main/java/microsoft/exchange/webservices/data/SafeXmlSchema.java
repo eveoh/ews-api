@@ -19,6 +19,7 @@ import java.io.InputStream;
  * XmlSchema with protection against DTD parsing in read overloads
  */
 
+@SuppressWarnings("ALL")
 public class SafeXmlSchema extends Schema {
 
     @Override

@@ -12,6 +12,7 @@ import java.util.List;
  * Represents a reply to a post item.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.PostReplyItem, returnedByServer = false)
+@SuppressWarnings("ALL")
 public final class PostReply extends ServiceObject {
 
     /**

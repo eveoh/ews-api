@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an impersonated user Id.
  */
+@SuppressWarnings("ALL")
 public final class ImpersonatedUserId {
 
     /**

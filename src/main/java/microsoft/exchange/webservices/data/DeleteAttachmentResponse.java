@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the response to an individual attachment deletion operation.
  */
+@SuppressWarnings("ALL")
 public final class DeleteAttachmentResponse extends ServiceResponse {
 
     /**

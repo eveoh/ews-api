@@ -15,6 +15,7 @@ import java.util.Map;
 /**
  * Represents the standard response to an Exchange Web Services operation.
  */
+@SuppressWarnings("ALL")
 public class ServiceResponse {
 
     /**

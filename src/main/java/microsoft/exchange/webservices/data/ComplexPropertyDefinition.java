@@ -13,6 +13,7 @@ import java.util.EnumSet;
  *
  * @param <TComplexProperty> The type of the complex property.
  */
+@SuppressWarnings("ALL")
 class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty> extends ComplexPropertyDefinitionBase {
 
     private Class<TComplexProperty> instance;

@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents the results of an action performed on a calendar item or meeting message, such as accepting, tentatively
  * accepting or declining a meeting request.
  */
+@SuppressWarnings("ALL")
 public final class CalendarActionResults {
 
     /**

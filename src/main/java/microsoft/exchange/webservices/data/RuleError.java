@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Defines the RuleError class.
  */
+@SuppressWarnings("ALL")
 public final class RuleError extends ComplexProperty {
 
     /**

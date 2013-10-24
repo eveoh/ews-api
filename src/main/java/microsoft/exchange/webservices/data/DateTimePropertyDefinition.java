@@ -12,6 +12,7 @@ import java.util.EnumSet;
 /**
  * Represents DateTime property definition.
  */
+@SuppressWarnings("ALL")
 class DateTimePropertyDefinition extends PropertyDefinition {
 
     /**

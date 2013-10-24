@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a conflict in a meeting time suggestion.
  */
+@SuppressWarnings("ALL")
 public final class Conflict extends ComplexProperty {
 
     /**

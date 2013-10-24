@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an Id expressed in a specific format.
  */
+@SuppressWarnings("ALL")
 public class AlternateId extends AlternateIdBase {
 
     /**

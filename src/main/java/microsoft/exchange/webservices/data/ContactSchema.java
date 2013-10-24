@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * Represents the schema for contacts.
  */
 @Schema
+@SuppressWarnings("ALL")
 public class ContactSchema extends ItemSchema {
 
     /**

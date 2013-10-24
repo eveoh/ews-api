@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Represents a response to a Move or Copy operation.
  */
+@SuppressWarnings("ALL")
 public final class MoveCopyItemResponse extends ServiceResponse implements IGetObjectInstanceDelegate<ServiceObject> {
 
     /**

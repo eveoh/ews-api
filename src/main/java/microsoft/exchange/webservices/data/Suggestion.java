@@ -15,6 +15,7 @@ import java.util.Date;
 /**
  * Represents a suggestion for a specific date.
  */
+@SuppressWarnings("ALL")
 public final class Suggestion extends ComplexProperty {
 
     /**

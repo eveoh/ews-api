@@ -12,6 +12,7 @@ import java.util.Date;
  * Represents an attendee to a meeting.
  */
 
+@SuppressWarnings("ALL")
 public final class Attendee extends EmailAddress {
 
     /**

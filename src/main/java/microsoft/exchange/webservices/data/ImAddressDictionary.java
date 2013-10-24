@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a dictionary of Instant Messaging addresses.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class ImAddressDictionary extends DictionaryProperty<ImAddressKey, ImAddressEntry> {
 
     /**

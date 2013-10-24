@@ -11,6 +11,7 @@ import java.util.Vector;
 /**
  * The Class Base64EncoderStream.
  */
+@SuppressWarnings("ALL")
 class Base64EncoderStream {
 
     /**

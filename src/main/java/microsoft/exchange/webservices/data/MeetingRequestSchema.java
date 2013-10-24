@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * Represents the schema for meeting requests.
  */
 @Schema
+@SuppressWarnings("ALL")
 public class MeetingRequestSchema extends MeetingMessageSchema {
 
     /**

@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a MoveFolder request.
  */
+@SuppressWarnings("ALL")
 class MoveFolderRequest extends MoveCopyFolderRequest<MoveCopyFolderResponse> {
 
     /**

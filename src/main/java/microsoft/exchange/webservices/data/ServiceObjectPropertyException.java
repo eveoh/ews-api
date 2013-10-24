@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an error that occurs when an operation on a property fails.
  */
+@SuppressWarnings("ALL")
 public class ServiceObjectPropertyException extends PropertyException {
 
     /**

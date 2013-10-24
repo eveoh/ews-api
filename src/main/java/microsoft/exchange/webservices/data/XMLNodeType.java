@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamConstants;
 /**
  * The Class XMLNodeType.
  */
+@SuppressWarnings("ALL")
 class XMLNodeType implements XMLStreamConstants {
 
     /**

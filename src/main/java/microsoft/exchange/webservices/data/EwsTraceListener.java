@@ -13,6 +13,7 @@ import java.io.PrintStream;
  *
  * @see EwsTraceEvent
  */
+@SuppressWarnings("ALL")
 class EwsTraceListener implements ITraceListener {
 
     /**

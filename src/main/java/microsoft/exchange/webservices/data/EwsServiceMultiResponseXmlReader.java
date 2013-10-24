@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
  * multi-response stream requires. If ever there comes a time we need to deal with multi-response streams with
  * user-generated content, we will need to tackle that parsing problem separately.
  */
+@SuppressWarnings("ALL")
 class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
 
     /**

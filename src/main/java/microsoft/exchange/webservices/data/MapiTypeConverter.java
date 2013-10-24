@@ -14,6 +14,7 @@ import java.util.*;
 /**
  * Utility class to convert between MAPI Property type values and strings.
  */
+@SuppressWarnings("ALL")
 class MapiTypeConverter {
 
     /**

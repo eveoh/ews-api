@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * Represents the schema for meeting messages.
  */
 @Schema
+@SuppressWarnings("ALL")
 public class MeetingMessageSchema extends EmailMessageSchema {
 
     /**

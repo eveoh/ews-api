@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class Convert.
  */
+@SuppressWarnings("ALL")
 class Convert {
 
     /**

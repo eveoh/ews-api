@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * Represents the schema for e-mail messages.
  */
 @Schema
+@SuppressWarnings("ALL")
 public class EmailMessageSchema extends ItemSchema {
 
     /**

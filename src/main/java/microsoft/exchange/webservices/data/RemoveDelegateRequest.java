@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Represents a RemoveDelete request.
  */
+@SuppressWarnings("ALL")
 class RemoveDelegateRequest extends DelegateManagementRequestBase<DelegateManagementResponse> {
 
     /**

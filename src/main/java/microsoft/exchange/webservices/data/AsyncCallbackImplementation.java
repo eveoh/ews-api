@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.concurrent.Future;
 
+@SuppressWarnings("ALL")
 public class AsyncCallbackImplementation extends AsyncCallback {
 
     @Override

@@ -12,6 +12,7 @@ import java.util.Date;
  * ConversationAction class that represents ConversationActionType in the request XML. This class really is meant for
  * representing single ConversationAction that needs to be taken on a conversation.
  */
+@SuppressWarnings("ALL")
 class ConversationAction {
 
     private ConversationActionType action;

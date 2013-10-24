@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a group member.
  */
 @RequiredServerVersion(version = ExchangeVersion.Exchange2010)
+@SuppressWarnings("ALL")
 public class GroupMember extends ComplexProperty implements IComplexPropertyChangedDelegate {
 
     // AddressInformation field.

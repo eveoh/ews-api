@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Provides data to a StreamingSubscriptionConnection's OnNotificationEvent event.
  */
+@SuppressWarnings("ALL")
 public class NotificationEventArgs {
 
 

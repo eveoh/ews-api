@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a response to a GetUserConfiguration request.
  */
+@SuppressWarnings("ALL")
 public final class GetUserConfigurationResponse extends ServiceResponse {
 
     /**

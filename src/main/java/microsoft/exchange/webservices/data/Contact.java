@@ -15,6 +15,7 @@ import java.util.Date;
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Contact, returnedByServer = true)
+@SuppressWarnings("ALL")
 public class Contact extends Item {
 
     /**

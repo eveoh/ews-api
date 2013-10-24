@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the parameters associated with a search folder.
  */
+@SuppressWarnings("ALL")
 public final class SearchFolderParameters extends ComplexProperty implements IComplexPropertyChangedDelegate {
 
     /**

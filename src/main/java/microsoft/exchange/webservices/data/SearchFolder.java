@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a search folder.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.SearchFolder, returnedByServer = true)
+@SuppressWarnings("ALL")
 public class SearchFolder extends Folder {
 
     /**

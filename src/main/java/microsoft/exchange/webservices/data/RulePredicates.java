@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the set of conditions and exceptions available for a rule.
  */
+@SuppressWarnings("ALL")
 public final class RulePredicates extends ComplexProperty {
 
     /**

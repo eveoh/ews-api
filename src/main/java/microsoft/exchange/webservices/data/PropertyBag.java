@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 /**
  * Represents a property bag keyed on PropertyDefinition objects.
  */
+@SuppressWarnings("ALL")
 class PropertyBag implements IComplexPropertyChanged, IComplexPropertyChangedDelegate {
 
     /**

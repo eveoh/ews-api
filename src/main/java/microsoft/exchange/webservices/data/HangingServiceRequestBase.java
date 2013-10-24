@@ -44,6 +44,7 @@ enum HangingRequestDisconnectReason {
  * Represents a collection of arguments for the HangingServiceRequestBase.HangingRequestDisconnectHandler delegate
  * method.
  */
+@SuppressWarnings("ALL")
 class HangingRequestDisconnectEventArgs {
 
     /**

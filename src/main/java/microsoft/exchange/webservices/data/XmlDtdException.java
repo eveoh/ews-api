@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Exception class for banned xml parsing
  */
+@SuppressWarnings("ALL")
 class XmlDtdException extends XmlException {
     /**
      * Gets the xml exception message.

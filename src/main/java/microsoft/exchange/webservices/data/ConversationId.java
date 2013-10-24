@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the Id of a Conversation.
  */
+@SuppressWarnings("ALL")
 public class ConversationId extends ServiceId {
 
     /**

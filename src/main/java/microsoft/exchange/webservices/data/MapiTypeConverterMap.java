@@ -11,6 +11,7 @@ import java.util.HashMap;
 /**
  * The Class MapiTypeConverterMap.
  */
+@SuppressWarnings("ALL")
 class MapiTypeConverterMap extends HashMap<MapiPropertyType, MapiTypeConverterMapEntry> {
 
 }

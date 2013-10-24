@@ -12,6 +12,7 @@ import java.util.Collection;
 /**
  * Represents the availability of an individual attendee.
  */
+@SuppressWarnings("ALL")
 public final class AttendeeAvailability extends ServiceResponse {
 
     /**

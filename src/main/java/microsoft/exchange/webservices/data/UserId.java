@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents the Id of a user.
  */
+@SuppressWarnings("ALL")
 public class UserId extends ComplexProperty {
 
     /**

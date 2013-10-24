@@ -15,6 +15,7 @@ import java.util.*;
  *
  * @param <TKey> The type of key
  */
+@SuppressWarnings("ALL")
 class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 
     /**

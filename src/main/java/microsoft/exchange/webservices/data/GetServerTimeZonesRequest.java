@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a GetServerTimeZones request.
  */
+@SuppressWarnings("ALL")
 class GetServerTimeZonesRequest extends MultiResponseServiceRequest<GetServerTimeZonesResponse> {
 
     /**

@@ -20,6 +20,7 @@ import java.util.Date;
 /**
  * * Stax based XML Writer implementation.
  */
+@SuppressWarnings("ALL")
 class EwsServiceXmlWriter implements IDisposable {
 
     /**

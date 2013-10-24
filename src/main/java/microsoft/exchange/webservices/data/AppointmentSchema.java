@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * Represents the schema for appointment and meeting requests.
  */
 @Schema
+@SuppressWarnings("ALL")
 public class AppointmentSchema extends ItemSchema {
 
     /**

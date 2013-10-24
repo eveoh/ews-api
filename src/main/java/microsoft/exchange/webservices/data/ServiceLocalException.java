@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an error that occurs when a service operation fails locally (e.g. validation error).
  */
+@SuppressWarnings("ALL")
 public class ServiceLocalException extends Exception {
 
     /**

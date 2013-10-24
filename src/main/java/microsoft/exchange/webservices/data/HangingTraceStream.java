@@ -15,6 +15,7 @@ import java.io.InputStream;
  * A stream that traces everything it returns from its Read() call. That trace may be retrieved at the end of the
  * stream.
  */
+@SuppressWarnings("ALL")
 class HangingTraceStream extends InputStream {
 
     private InputStream underlyingStream;

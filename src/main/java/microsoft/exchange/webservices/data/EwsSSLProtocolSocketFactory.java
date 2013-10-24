@@ -48,6 +48,7 @@ import java.net.*;
  * reference material, which may be inappropriate for use without additional customization. </p>
  */
 
+@SuppressWarnings("ALL")
 class EwsSSLProtocolSocketFactory implements SecureProtocolSocketFactory {
 
     /** The SSL Context. */
@@ -94,9 +95,9 @@ class EwsSSLProtocolSocketFactory implements SecureProtocolSocketFactory {
     /**
      * Attempts to get a new socket connection to the given host within the given time limit.
      * <p>
-     * To circumvent the limitations of older JREs that do not support connect timeout a 
-     * controller thread is executed. The controller thread attempts to create a new socket 
-     * within the given limit of time. If socket constructor does not return until the 
+     * To circumvent the limitations of older JREs that do not support connect timeout a
+     * controller thread is executed. The controller thread attempts to create a new socket
+     * within the given limit of time. If socket constructor does not return until the
      * timeout expires, the controller terminates and throws an {@link ConnectTimeoutException}
      * </p>
      *

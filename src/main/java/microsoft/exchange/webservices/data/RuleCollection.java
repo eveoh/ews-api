@@ -12,6 +12,7 @@ import java.util.Iterator;
 /**
  * Represents a collection of rules.
  */
+@SuppressWarnings("ALL")
 public final class RuleCollection extends ComplexProperty implements Iterable<Rule> {
 
     /**

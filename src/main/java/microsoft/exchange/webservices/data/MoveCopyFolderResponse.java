@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Represents the base response class for individual folder move and copy operations.
  */
+@SuppressWarnings("ALL")
 public final class MoveCopyFolderResponse extends ServiceResponse implements IGetObjectInstanceDelegate<ServiceObject> {
 
     /**

@@ -11,6 +11,7 @@ import java.io.*;
 /**
  * Represents a file attachment.
  */
+@SuppressWarnings("ALL")
 public final class FileAttachment extends Attachment {
 
     /**

@@ -11,6 +11,7 @@ import java.util.UUID;
 /**
  * Represents the definition of an extended property.
  */
+@SuppressWarnings("ALL")
 public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 
     /**

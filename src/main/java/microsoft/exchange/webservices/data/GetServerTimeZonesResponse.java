@@ -13,6 +13,7 @@ import java.util.Collection;
 /**
  * Represents the response to a GetServerTimeZones request.
  */
+@SuppressWarnings("ALL")
 class GetServerTimeZonesResponse extends ServiceResponse {
 
     /**

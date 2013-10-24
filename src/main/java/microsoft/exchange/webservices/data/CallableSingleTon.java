@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@SuppressWarnings("ALL")
 public class CallableSingleTon {
     static ExecutorService es;
 

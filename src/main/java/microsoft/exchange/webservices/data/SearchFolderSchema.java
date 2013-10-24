@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * The Class SearchFolderSchema.
  */
 @Schema
+@SuppressWarnings("ALL")
 public class SearchFolderSchema extends FolderSchema {
 
     /**

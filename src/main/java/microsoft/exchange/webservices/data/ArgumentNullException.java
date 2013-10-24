@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class ArgumentNullException.
  */
+@SuppressWarnings("ALL")
 public class ArgumentNullException extends Exception {
 
     /**

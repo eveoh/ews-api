@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an item Id provided by a ItemBase object.
  */
+@SuppressWarnings("ALL")
 class ItemWrapper extends AbstractItemIdWrapper {
 
     /**

@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a streaming subscription.
  */
+@SuppressWarnings("ALL")
 public final class StreamingSubscription extends SubscriptionBase {
 
     /**

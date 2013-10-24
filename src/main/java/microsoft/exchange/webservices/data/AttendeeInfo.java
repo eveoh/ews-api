@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents information about an attendee for which to request availability information.
  */
+@SuppressWarnings("ALL")
 public final class AttendeeInfo implements ISelfValidate {
 
     /**

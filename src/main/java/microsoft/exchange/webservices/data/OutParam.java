@@ -11,6 +11,7 @@ package microsoft.exchange.webservices.data;
  *
  * @param <T> the generic type
  */
+@SuppressWarnings("ALL")
 public class OutParam<T> extends Param<T> {
 
     /**

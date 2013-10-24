@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a collection of OccurrenceInfo objects.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class OccurrenceInfoCollection extends ComplexPropertyCollection<OccurrenceInfo> {
 
     /**

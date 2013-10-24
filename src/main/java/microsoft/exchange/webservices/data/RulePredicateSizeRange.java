@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents the minimum and maximum size of a message.
  */
+@SuppressWarnings("ALL")
 public final class RulePredicateSizeRange extends ComplexProperty {
     /**
      * Minimum Size.

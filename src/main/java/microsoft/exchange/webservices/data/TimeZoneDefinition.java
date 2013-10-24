@@ -12,6 +12,7 @@ import java.util.*;
 /**
  * Represents a time zone as defined by the EWS schema.
  */
+@SuppressWarnings("ALL")
 public class TimeZoneDefinition extends ComplexProperty implements Comparator<TimeZoneTransition> {
     /**
      * Prefix for generated ids.

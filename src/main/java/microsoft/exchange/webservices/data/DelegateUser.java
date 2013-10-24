@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a delegate user.
  */
+@SuppressWarnings("ALL")
 public final class DelegateUser extends ComplexProperty {
 
     /**

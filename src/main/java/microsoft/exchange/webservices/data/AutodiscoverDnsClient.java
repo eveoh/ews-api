@@ -15,6 +15,7 @@ import java.util.Random;
 /**
  * Class that reads AutoDiscover configuration information from DNS.
  */
+@SuppressWarnings("ALL")
 class AutodiscoverDnsClient {
 
     /**

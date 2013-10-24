@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Defines the GetStreamingEventsRequest class.
  */
+@SuppressWarnings("ALL")
 class GetStreamingEventsRequest extends HangingServiceRequestBase {
 
     protected final static int HeartbeatFrequencyDefault = 45000; ////45s in ms

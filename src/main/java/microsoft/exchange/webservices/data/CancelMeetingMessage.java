@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a meeting cancellation message.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.CancelCalendarItem, returnedByServer = false)
+@SuppressWarnings("ALL")
 public final class CancelMeetingMessage extends CalendarResponseMessageBase<MeetingCancellation> {
 
     /**

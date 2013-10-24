@@ -24,6 +24,7 @@ import java.io.*;
 /**
  * XmlDocument that does not allow DTD parsing.
  */
+@SuppressWarnings("ALL")
 public class SafeXmlDocument extends DocumentBuilder {
 
     /**

@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a CopyItem request.
  */
+@SuppressWarnings("ALL")
 public class CopyItemRequest extends MoveCopyItemRequest<MoveCopyItemResponse> {
 
     /**

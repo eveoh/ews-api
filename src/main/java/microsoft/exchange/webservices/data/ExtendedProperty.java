@@ -12,6 +12,7 @@ import java.util.ArrayList;
 /**
  * Represents an extended property.
  */
+@SuppressWarnings("ALL")
 public final class ExtendedProperty extends ComplexProperty {
 
     /**

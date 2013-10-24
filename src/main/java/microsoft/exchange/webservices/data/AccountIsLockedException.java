@@ -12,6 +12,7 @@ import java.net.URI;
  * Represents an error that occurs when the account that is being accessed is locked and requires user interaction to be
  * unlocked.
  */
+@SuppressWarnings("ALL")
 public class AccountIsLockedException extends ServiceRemoteException {
 
     private URI accountUnlockUrl;

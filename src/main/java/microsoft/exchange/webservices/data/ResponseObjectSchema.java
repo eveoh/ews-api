@@ -11,6 +11,7 @@ import java.util.EnumSet;
 /**
  * Represents ResponseObject schema definition.
  */
+@SuppressWarnings("ALL")
 class ResponseObjectSchema extends ServiceObjectSchema {
 
     /**

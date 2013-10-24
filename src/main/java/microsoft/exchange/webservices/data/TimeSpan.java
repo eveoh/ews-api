@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class TimeSpan.
  */
+@SuppressWarnings("ALL")
 public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
 
     /**

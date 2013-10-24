@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
+@SuppressWarnings("ALL")
 public final class GetPasswordExpirationDateRequest extends SimpleServiceRequestBase {
 
     @Override

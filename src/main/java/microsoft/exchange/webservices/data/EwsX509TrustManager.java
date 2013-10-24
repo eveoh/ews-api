@@ -20,6 +20,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
+@SuppressWarnings("ALL")
 class EwsX509TrustManager implements X509TrustManager {
     /**
      * The Standard TrustManager.

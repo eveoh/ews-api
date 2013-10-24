@@ -11,6 +11,7 @@ import java.util.EnumSet;
 /**
  * Represents response object property defintion.
  */
+@SuppressWarnings("ALL")
 public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
 
     /**

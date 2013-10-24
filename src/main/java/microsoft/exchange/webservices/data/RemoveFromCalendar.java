@@ -12,6 +12,7 @@ import java.util.List;
  * Represents a response object created to remove a calendar item from a meeting cancellation.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.RemoveItem, returnedByServer = false)
+@SuppressWarnings("ALL")
 class RemoveFromCalendar extends ServiceObject {
 
     /**

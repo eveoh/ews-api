@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Represents a list of suggested name resolutions.
  */
+@SuppressWarnings("ALL")
 public final class NameResolutionCollection implements Iterable<NameResolution> {
 
     /**

@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Defines the AlternateMailbox class.
  */
+@SuppressWarnings("ALL")
 public final class AlternateMailbox {
 
     /**

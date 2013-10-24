@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * The Class UnsubscribeRequest.
  */
+@SuppressWarnings("ALL")
 class UnsubscribeRequest extends MultiResponseServiceRequest<ServiceResponse> {
 
     /**

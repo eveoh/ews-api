@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a push subscriptions..
  */
+@SuppressWarnings("ALL")
 public final class PushSubscription extends SubscriptionBase {
 
     /**

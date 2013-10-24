@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a meeting declination message.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.DeclineItem, returnedByServer = false)
+@SuppressWarnings("ALL")
 public final class DeclineMeetingInvitationMessage extends CalendarResponseMessage<MeetingResponse> {
 
     /**

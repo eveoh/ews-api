@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class HttpProxyCredentials.
  */
+@SuppressWarnings("ALL")
 class HttpProxyCredentials {
 
     /**

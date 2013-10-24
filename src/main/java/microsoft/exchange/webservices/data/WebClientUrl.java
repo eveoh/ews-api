@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the URL of the Exchange web client.
  */
+@SuppressWarnings("ALL")
 public final class WebClientUrl {
 
     /**

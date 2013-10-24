@@ -12,6 +12,7 @@ import java.util.Collection;
 /**
  * Represents the set of actions available for a rule.
  */
+@SuppressWarnings("ALL")
 public final class RuleActions extends ComplexProperty {
 
     /**

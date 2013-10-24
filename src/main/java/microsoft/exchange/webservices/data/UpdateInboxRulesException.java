@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an exception thrown when an error occurs as a result of calling the UpdateInboxRules operation.
  */
+@SuppressWarnings("ALL")
 public class UpdateInboxRulesException extends ServiceRemoteException {
 
     /**

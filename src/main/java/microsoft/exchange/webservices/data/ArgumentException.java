@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class ArgumentException.
  */
+@SuppressWarnings("ALL")
 public class ArgumentException extends Exception {
 
     /**

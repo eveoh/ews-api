@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents the body part of an item that is unique to the conversation the item is part of.
  */
+@SuppressWarnings("ALL")
 public final class UniqueBody extends ComplexProperty {
 
     /**

@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an error that occurs when the XML for a response cannot be deserialized.
  */
+@SuppressWarnings("ALL")
 public final class ServiceXmlDeserializationException extends ServiceLocalException {
 
     /**

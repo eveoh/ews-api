@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a mailbox reference.
  */
+@SuppressWarnings("ALL")
 public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 
     // Routing type

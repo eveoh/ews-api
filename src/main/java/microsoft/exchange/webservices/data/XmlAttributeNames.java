@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * XML attribute names.
  */
+@SuppressWarnings("ALL")
 class XmlAttributeNames {
 
     /**

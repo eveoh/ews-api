@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a user's Out of Office (OOF) settings.
  */
+@SuppressWarnings("ALL")
 public final class OofSettings extends ComplexProperty implements ISelfValidate {
 
     /**

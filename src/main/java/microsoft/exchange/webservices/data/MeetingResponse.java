@@ -11,6 +11,7 @@ package microsoft.exchange.webservices.data;
  * MeetingMessageSchema class.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.MeetingResponse)
+@SuppressWarnings("ALL")
 public class MeetingResponse extends MeetingMessage {
 
     /**

@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a UpdateUserConfiguration request.
  */
+@SuppressWarnings("ALL")
 public class UpdateUserConfigurationRequest extends MultiResponseServiceRequest<ServiceResponse> {
 
     /**

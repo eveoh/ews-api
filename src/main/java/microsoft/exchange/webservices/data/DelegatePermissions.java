@@ -13,6 +13,7 @@ import java.util.Map;
 /**
  * Represents the permissions of a delegate user.
  */
+@SuppressWarnings("ALL")
 public final class DelegatePermissions extends ComplexProperty {
 
     private Map<String, DelegateFolderPermission> delegateFolderPermissions;

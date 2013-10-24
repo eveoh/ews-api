@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Represents a user setting that is a collection of alternate mailboxes.
  */
+@SuppressWarnings("ALL")
 public final class AlternateMailboxCollection {
 
     private ArrayList<AlternateMailbox> entries;

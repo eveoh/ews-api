@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Defines the EwsXmlReader class.
  */
+@SuppressWarnings("ALL")
 public final class InternetMessageHeader extends ComplexProperty {
 
     /**

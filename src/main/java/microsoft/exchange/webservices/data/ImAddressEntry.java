@@ -12,6 +12,7 @@ import javax.xml.stream.XMLStreamException;
  * Represents an entry of an ImAddressDictionary.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class ImAddressEntry extends DictionaryEntryProperty<ImAddressKey> {
 
     /**

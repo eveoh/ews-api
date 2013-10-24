@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Defines the AutodiscoverError class.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class AutodiscoverError {
 
     /**

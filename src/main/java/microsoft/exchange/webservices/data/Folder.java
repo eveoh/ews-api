@@ -13,6 +13,7 @@ import java.util.EnumSet;
  * Represents a generic folder.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Folder)
+@SuppressWarnings("ALL")
 public class Folder extends ServiceObject {
 
     /**

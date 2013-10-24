@@ -15,6 +15,7 @@ import java.util.List;
  *
  * @param <TItem> The type of items that the opeartion returned.
  */
+@SuppressWarnings("ALL")
 public final class FindItemResponse<TItem extends Item> extends ServiceResponse {
 
     /**

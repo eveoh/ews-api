@@ -11,6 +11,7 @@ import java.util.*;
 /**
  * Represents a collection of notification events.
  */
+@SuppressWarnings("ALL")
 public final class GetEventsResults {
     /**
      * Watermark in event.

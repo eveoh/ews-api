@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the response to a folder synchronization operation.
  */
+@SuppressWarnings("ALL")
 public final class SyncFolderHierarchyResponse extends SyncResponse<Folder, FolderChange> {
 
     /**

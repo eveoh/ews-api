@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a base 64 class.
  */
+@SuppressWarnings("ALL")
 class Base64 {
 
     /**

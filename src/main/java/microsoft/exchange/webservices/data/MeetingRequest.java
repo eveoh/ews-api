@@ -14,6 +14,7 @@ import java.util.Date;
  * defined in the MeetingRequestSchema class.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.MeetingRequest)
+@SuppressWarnings("ALL")
 public class MeetingRequest extends MeetingMessage implements ICalendarActionProvider {
 
     /**

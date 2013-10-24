@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents the view settings in a folder search operation.
  */
+@SuppressWarnings("ALL")
 public final class ConversationIndexedItemView extends PagedView {
 
     private OrderByCollection orderBy = new OrderByCollection();

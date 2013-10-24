@@ -14,6 +14,7 @@ import java.util.Iterator;
  *
  * @param <TItem> The type of item returned by the search operation.
  */
+@SuppressWarnings("ALL")
 public final class GroupedFindItemsResults<TItem extends Item> implements Iterable<ItemGroup<TItem>> {
 
     /**

@@ -8,6 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.concurrent.*;
 
+@SuppressWarnings("ALL")
 class AsyncExecutor extends ThreadPoolExecutor implements ExecutorService {
 
     int poolSize = 1;

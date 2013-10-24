@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a Contact Group. Properties available on contact groups are defined in the ContactGroupSchema class.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.DistributionList, returnedByServer = true)
+@SuppressWarnings("ALL")
 public class ContactGroup extends Item {
 
     /**

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /**
  * Represents a user setting that is a collection of protocol connection.
  */
+@SuppressWarnings("ALL")
 public final class ProtocolConnectionCollection {
 
     /**

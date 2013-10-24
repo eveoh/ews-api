@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an error from a GetUserSettings request.
  */
+@SuppressWarnings("ALL")
 public final class UserSettingError {
 
     /**

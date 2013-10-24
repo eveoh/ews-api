@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Represents the response to an individual folder retrieval operation.
  */
+@SuppressWarnings("ALL")
 public final class GetFolderResponse extends ServiceResponse implements IGetObjectInstanceDelegate<ServiceObject> {
 
     /**

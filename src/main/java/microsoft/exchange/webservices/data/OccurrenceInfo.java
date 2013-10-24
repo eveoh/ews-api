@@ -11,6 +11,7 @@ import java.util.Date;
 /**
  * Encapsulates information on the occurrence of a recurring appointment.
  */
+@SuppressWarnings("ALL")
 public final class OccurrenceInfo extends ComplexProperty {
 
     /**

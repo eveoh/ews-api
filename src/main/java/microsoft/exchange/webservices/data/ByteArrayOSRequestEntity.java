@@ -12,6 +12,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+@SuppressWarnings("ALL")
 class ByteArrayOSRequestEntity implements RequestEntity {
 
     private ByteArrayOutputStream os = null;

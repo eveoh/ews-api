@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a collection of Internet message headers.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class InternetMessageHeaderCollection extends ComplexPropertyCollection<InternetMessageHeader> {
     /**
      * Initializes a new instance of the "InternetMessageHeaderCollection" class.

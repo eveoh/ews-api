@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a meeting acceptance message.
  */
+@SuppressWarnings("ALL")
 public final class AcceptMeetingInvitationMessage extends CalendarResponseMessage<MeetingResponse> {
 
     /**

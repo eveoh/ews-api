@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Represents a response to an individual item retrieval operation.
  */
+@SuppressWarnings("ALL")
 public final class GetItemResponse extends ServiceResponse implements IGetObjectInstanceDelegate {
 
     /**

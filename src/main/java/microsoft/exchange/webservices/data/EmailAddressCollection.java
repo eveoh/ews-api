@@ -11,6 +11,7 @@ import java.util.Iterator;
 /**
  * Represents a collection of e-mail addresses.
  */
+@SuppressWarnings("ALL")
 public final class EmailAddressCollection extends ComplexPropertyCollection<EmailAddress> {
 
     //XML element name

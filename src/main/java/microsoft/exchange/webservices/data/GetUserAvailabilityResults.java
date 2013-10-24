@@ -11,6 +11,7 @@ import java.util.Collection;
 /**
  * Represents the results of a GetUserAvailability operation.
  */
+@SuppressWarnings("ALL")
 public final class GetUserAvailabilityResults {
 
     /**

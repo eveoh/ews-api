@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a dictionary of physical addresses.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class PhysicalAddressDictionary extends DictionaryProperty<PhysicalAddressKey, PhysicalAddressEntry> {
 
     /**

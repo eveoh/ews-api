@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Represents the response to a delegate managent-related operation.
  */
+@SuppressWarnings("ALL")
 class DelegateManagementResponse extends ServiceResponse {
 
     /**

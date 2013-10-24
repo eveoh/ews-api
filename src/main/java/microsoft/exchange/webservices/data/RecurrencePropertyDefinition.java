@@ -11,6 +11,7 @@ import java.util.EnumSet;
 /**
  * Represenrs recurrence property definition.
  */
+@SuppressWarnings("ALL")
 public class RecurrencePropertyDefinition extends PropertyDefinition {
 
     /**

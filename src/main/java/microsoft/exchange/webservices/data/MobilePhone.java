@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a mobile phone.
  */
+@SuppressWarnings("ALL")
 public final class MobilePhone implements ISelfValidate {
 
     /**

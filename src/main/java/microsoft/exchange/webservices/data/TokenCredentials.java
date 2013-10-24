@@ -11,6 +11,7 @@ import java.net.URISyntaxException;
 /**
  * TokenCredentials provides credentials if you already have a token.
  */
+@SuppressWarnings("ALL")
 public final class TokenCredentials extends WSSecurityBasedCredentials {
 
     /**

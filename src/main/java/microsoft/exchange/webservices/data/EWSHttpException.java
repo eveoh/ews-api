@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class EWSHttpException.
  */
+@SuppressWarnings("ALL")
 public class EWSHttpException extends Exception {
 
     /**

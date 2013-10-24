@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Represents a list of strings.
  */
+@SuppressWarnings("ALL")
 public class StringList extends ComplexProperty implements Iterable<String> {
 
     /**

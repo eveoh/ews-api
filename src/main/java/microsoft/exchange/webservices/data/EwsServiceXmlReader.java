@@ -18,6 +18,7 @@ import java.util.List;
 /**
  * XML reader.
  */
+@SuppressWarnings("ALL")
 class EwsServiceXmlReader extends EwsXmlReader {
 
     /**

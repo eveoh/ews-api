@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the Id of a folder.
  */
+@SuppressWarnings("ALL")
 public final class FolderId extends ServiceId {
 
     /**

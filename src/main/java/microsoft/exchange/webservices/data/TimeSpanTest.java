@@ -12,6 +12,7 @@ import java.util.GregorianCalendar;
 /**
  * The Class TimeSpanTest.
  */
+@SuppressWarnings("ALL")
 public class TimeSpanTest {
     // public sat;
 

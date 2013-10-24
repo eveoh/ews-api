@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the complete name of a contact.
  */
+@SuppressWarnings("ALL")
 public final class CompleteName extends ComplexProperty {
 
     /**

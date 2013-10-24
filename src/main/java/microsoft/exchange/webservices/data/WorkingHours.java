@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Represents the working hours for a specific time zone.
  */
+@SuppressWarnings("ALL")
 public final class WorkingHours extends ComplexProperty {
 
     /**

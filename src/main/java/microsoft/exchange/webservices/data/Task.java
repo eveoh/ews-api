@@ -14,6 +14,7 @@ import java.util.Date;
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Task)
+@SuppressWarnings("ALL")
 public class Task extends Item {
 
     /**

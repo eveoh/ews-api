@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Represents a group of time zone period transitions.
  */
+@SuppressWarnings("ALL")
 class TimeZoneTransitionGroup extends ComplexProperty {
 
     /**

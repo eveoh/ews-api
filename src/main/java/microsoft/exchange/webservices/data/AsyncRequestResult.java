@@ -8,6 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.concurrent.*;
 
+@SuppressWarnings("ALL")
 public class AsyncRequestResult implements IAsyncResult {
 
     ServiceRequestBase serviceRequest;

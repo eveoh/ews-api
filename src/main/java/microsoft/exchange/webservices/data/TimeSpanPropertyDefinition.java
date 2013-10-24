@@ -11,6 +11,7 @@ import java.util.EnumSet;
 /**
  * Represents TimeSpan property definition.
  */
+@SuppressWarnings("ALL")
 class TimeSpanPropertyDefinition extends GenericPropertyDefinition<TimeSpan> {
 
 

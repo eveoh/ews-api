@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents an Out of Office response.
  */
+@SuppressWarnings("ALL")
 public final class OofReply {
 
     /**

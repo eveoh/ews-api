@@ -12,6 +12,7 @@ import java.util.EnumSet;
 /**
  * Represents an object that can be used to store user-defined configuration settings.
  */
+@SuppressWarnings("ALL")
 public class UserConfiguration {
 
     /**

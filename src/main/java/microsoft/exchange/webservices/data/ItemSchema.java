@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * Represents the schema for generic items.
  */
 @Schema
+@SuppressWarnings("ALL")
 public class ItemSchema extends ServiceObjectSchema {
 
     /**

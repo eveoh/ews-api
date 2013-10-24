@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an operation to create a new rule.
  */
+@SuppressWarnings("ALL")
 public final class CreateRuleOperation extends RuleOperation {
 
 

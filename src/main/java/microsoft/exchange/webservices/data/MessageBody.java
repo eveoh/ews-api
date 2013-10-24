@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents the body of a message.
  */
+@SuppressWarnings("ALL")
 public final class MessageBody extends ComplexProperty {
 
     /**

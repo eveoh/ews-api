@@ -11,6 +11,7 @@ package microsoft.exchange.webservices.data;
  *
  * @param <TItem> Item type.
  */
+@SuppressWarnings("ALL")
 public final class GenericItemAttachment<TItem extends Item> extends ItemAttachment {
 
     /**

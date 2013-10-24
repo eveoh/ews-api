@@ -12,6 +12,7 @@ import java.util.EnumSet;
  * Represents the schema for task items.
  */
 @Schema
+@SuppressWarnings("ALL")
 public class TaskSchema extends ItemSchema {
 
     /**

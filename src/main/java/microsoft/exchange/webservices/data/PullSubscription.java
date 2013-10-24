@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a pull subscription.
  */
+@SuppressWarnings("ALL")
 public final class PullSubscription extends SubscriptionBase {
 
     /**

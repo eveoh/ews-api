@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a collection of item Ids.
  */
+@SuppressWarnings("ALL")
 public final class ItemIdCollection extends ComplexPropertyCollection<ItemId> {
     /**
      * Initializes a new instance of the <see cref="ItemIdCollection"/> class.

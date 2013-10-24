@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * The Class UpdateItemResponse.
  */
+@SuppressWarnings("ALL")
 public final class UpdateItemResponse extends ServiceResponse implements IGetObjectInstanceDelegate {
 
     /**

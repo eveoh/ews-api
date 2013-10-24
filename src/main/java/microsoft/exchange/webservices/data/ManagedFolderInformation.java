@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents information for a managed folder.
  */
+@SuppressWarnings("ALL")
 public final class ManagedFolderInformation extends ComplexProperty {
 
     /**

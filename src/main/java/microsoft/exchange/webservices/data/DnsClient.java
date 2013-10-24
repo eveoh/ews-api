@@ -20,6 +20,7 @@ import java.util.List;
 /**
  * Class that represents DNS Query client.
  */
+@SuppressWarnings("ALL")
 class DnsClient {
 
     /**

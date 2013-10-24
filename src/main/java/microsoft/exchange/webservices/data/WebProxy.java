@@ -11,6 +11,7 @@ package microsoft.exchange.webservices.data;
  * authentication.
  */
 
+@SuppressWarnings("ALL")
 public class WebProxy {
 
     /**

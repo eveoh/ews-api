@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the response to an individual Id conversion operation.
  */
+@SuppressWarnings("ALL")
 public final class ConvertIdResponse extends ServiceResponse {
 
     /**

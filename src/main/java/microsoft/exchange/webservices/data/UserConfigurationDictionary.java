@@ -16,6 +16,7 @@ import java.util.Map.Entry;
  * Represents a user configuration's Dictionary property.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class UserConfigurationDictionary extends ComplexProperty implements Iterable<Object> {
 
     // TODO: Consider implementing IsDirty mechanism in ComplexProperty.

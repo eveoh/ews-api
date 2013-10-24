@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a phone call.
  */
+@SuppressWarnings("ALL")
 public final class PhoneCall extends ComplexProperty {
 
     /**

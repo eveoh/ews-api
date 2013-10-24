@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents an indexed property definition.
  */
+@SuppressWarnings("ALL")
 public final class IndexedPropertyDefinition extends ServiceObjectPropertyDefinition {
 
     // Index attribute of IndexedFieldURI element.

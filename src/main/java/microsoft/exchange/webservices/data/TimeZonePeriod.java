@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a time zone period as defined in the EWS schema.
  */
+@SuppressWarnings("ALL")
 class TimeZonePeriod extends ComplexProperty {
 
     /**

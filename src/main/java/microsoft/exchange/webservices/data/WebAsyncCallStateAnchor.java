@@ -6,6 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
+@SuppressWarnings("ALL")
 public class WebAsyncCallStateAnchor {
 
     ServiceRequestBase serviceRequest;

@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents ResponseMessage schema definition.
  */
+@SuppressWarnings("ALL")
 class ResponseMessageSchema extends ServiceObjectSchema {
 
     /**

@@ -11,6 +11,7 @@ import java.util.EnumSet;
 /**
  * Represents a meeting cancellation message.
  */
+@SuppressWarnings("ALL")
 class CancelMeetingMessageSchema extends ServiceObjectSchema {
 
     /**

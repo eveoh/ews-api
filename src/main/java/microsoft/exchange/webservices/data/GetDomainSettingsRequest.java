@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Represents a GetDomainSettings request.
  */
+@SuppressWarnings("ALL")
 class GetDomainSettingsRequest extends AutodiscoverRequest {
 
     /**

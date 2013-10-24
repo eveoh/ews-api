@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents the schema for CalendarResponseObject.
  */
+@SuppressWarnings("ALL")
 class CalendarResponseObjectSchema extends ServiceObjectSchema {
 
     // This must be declared after the property definitions

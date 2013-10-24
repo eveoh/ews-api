@@ -12,6 +12,7 @@ import java.util.Date;
 /**
  * Represents the options of a GetAvailability request.
  */
+@SuppressWarnings("ALL")
 public final class AvailabilityOptions {
 
     /**

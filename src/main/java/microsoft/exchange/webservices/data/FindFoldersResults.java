@@ -12,6 +12,7 @@ import java.util.Iterator;
 /**
  * Represents the results of a folder search operation.
  */
+@SuppressWarnings("ALL")
 public final class FindFoldersResults implements Iterable<Folder> {
 
     /**

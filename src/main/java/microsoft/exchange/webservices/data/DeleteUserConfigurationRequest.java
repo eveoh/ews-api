@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a DeleteUserConfiguration request.
  */
+@SuppressWarnings("ALL")
 class DeleteUserConfigurationRequest extends MultiResponseServiceRequest<ServiceResponse> {
 
     /**

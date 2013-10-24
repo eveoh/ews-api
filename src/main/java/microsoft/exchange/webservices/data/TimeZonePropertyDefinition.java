@@ -13,6 +13,7 @@ import java.util.TimeZone;
 /**
  * Represents a property definition for properties of type TimeZoneInfo.
  */
+@SuppressWarnings("ALL")
 class TimeZonePropertyDefinition extends PropertyDefinition {
 
     /**

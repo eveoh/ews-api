@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a SyncFolderItems request.
  */
+@SuppressWarnings("ALL")
 class SyncFolderItemsRequest extends MultiResponseServiceRequest<SyncFolderItemsResponse> {
 
     /**

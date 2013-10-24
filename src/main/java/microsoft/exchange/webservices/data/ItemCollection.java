@@ -16,6 +16,7 @@ import java.util.List;
  * @param <TItem> the generic type. The type of item the collection contains.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class ItemCollection<TItem extends Item> extends ComplexProperty implements Iterable<TItem> {
 
     /**

@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Defines the SubscribeToStreamingNotificationsRequest class.
  */
+@SuppressWarnings("ALL")
 class SubscribeToStreamingNotificationsRequest extends SubscribeRequest<StreamingSubscription> {
 
     /**

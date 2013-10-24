@@ -14,6 +14,7 @@ import java.util.Map;
 /**
  * Represents the response to a GetDomainSettings call for an individual domain.
  */
+@SuppressWarnings("ALL")
 public final class GetDomainSettingsResponse extends AutodiscoverResponse {
 
     /**

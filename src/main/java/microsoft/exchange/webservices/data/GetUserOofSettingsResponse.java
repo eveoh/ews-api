@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents response to GetUserOofSettings request.
  */
+@SuppressWarnings("ALL")
 public class GetUserOofSettingsResponse extends ServiceResponse {
 
     /**

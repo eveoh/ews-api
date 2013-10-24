@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents Exchange server information.
  */
+@SuppressWarnings("ALL")
 public final class ExchangeServerInfo {
 
     /**

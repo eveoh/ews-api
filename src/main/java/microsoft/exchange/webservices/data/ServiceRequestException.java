@@ -9,6 +9,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class ServiceRequestException.
  */
+@SuppressWarnings("ALL")
 public class ServiceRequestException extends ServiceRemoteException {
 
     /**

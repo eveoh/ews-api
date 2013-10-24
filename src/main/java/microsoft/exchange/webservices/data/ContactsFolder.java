@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a folder containing contacts.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.ContactsFolder)
+@SuppressWarnings("ALL")
 public class ContactsFolder extends Folder {
 
     /**

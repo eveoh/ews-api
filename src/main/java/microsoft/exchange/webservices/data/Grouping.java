@@ -12,6 +12,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents grouping options in item search operations.
  */
+@SuppressWarnings("ALL")
 public final class Grouping implements ISelfValidate {
 
     /**

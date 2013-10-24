@@ -10,6 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents an entry of a PhoneNumberDictionary.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
+@SuppressWarnings("ALL")
 public final class PhoneNumberEntry extends DictionaryEntryProperty<PhoneNumberKey> {
 
     /**

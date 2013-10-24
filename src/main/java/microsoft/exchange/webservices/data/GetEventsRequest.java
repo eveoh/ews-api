@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * GetEvents request.
  */
+@SuppressWarnings("ALL")
 class GetEventsRequest extends MultiResponseServiceRequest<GetEventsResponse> {
 
     /**

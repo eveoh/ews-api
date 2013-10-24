@@ -15,6 +15,7 @@ import java.util.Date;
 /**
  * Represents a time zone period transition that occurs on a fixed (absolute) date.
  */
+@SuppressWarnings("ALL")
 class AbsoluteDateTransition extends TimeZoneTransition {
 
     /**

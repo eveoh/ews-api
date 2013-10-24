@@ -15,6 +15,7 @@ import java.util.Map;
  * ServiceObjectInfo contains metadata on how to map from an element name to a ServiceObject type as well as how to map
  * from a ServiceObject type to appropriate constructors.
  */
+@SuppressWarnings("ALL")
 class ServiceObjectInfo {
 
     /**
