@@ -105,9 +105,6 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
         boolean retValue = false;
         if (!propertyBag.tryGetValue(this, complexProperty) || !this.hasFlag(PropertyDefinitionFlags.ReuseInstance,
                 propertyBag.getOwner().getService().getRequestedServerVersion())) {
-            ;
-        }
-        {
             complexProperty.setParam(this.createPropertyInstance(propertyBag.getOwner()));
             retValue = true;
         }
