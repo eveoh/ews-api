@@ -1,5 +1,8 @@
 description = 'MTT External Calendaring EWS API'
 
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
 dependencies {
     compile group: 'commons-httpclient', name: 'commons-httpclient', version: '3.1'
     compile group: 'commons-codec', name: 'commons-codec', version: '1.7'
