@@ -1,6 +1,7 @@
 .gradle*
 rebel.xml
 build/
+classes/
 
 # Eclipse
 *.launch
