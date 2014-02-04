@@ -1,5 +1,5 @@
 description = 'Microsoft Exchange Web Services Java API'
-version = '1.2-3'
+version = '1.2-2'
 group = 'nl.eveoh'
 
 apply plugin: 'java'

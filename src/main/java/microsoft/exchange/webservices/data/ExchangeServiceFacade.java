@@ -11,13 +11,13 @@ import java.util.Locale;
 /**
  * Represents a binding to the Exchange Web Services, but this only only throws runtime exceptions.
  */
-public final class ExchangeServiceFacade extends ExchangeServiceBaseFacade {
+public final class ExchangeServiceFacade {
 
-    protected ExchangeService es;
+    public final ExchangeService es;
+    public final EwsExceptionTranslator ewsExceptionTranslator = new EwsExceptionTranslator();
 
 
     public ExchangeServiceFacade(ExchangeService es) {
-        super(es);
         this.es = es;
     }
 
