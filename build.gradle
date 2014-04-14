@@ -1,12 +1,12 @@
 description = 'Microsoft Exchange Web Services Java API'
-version = '1.2-6'
+version = '1.2-7'
 group = 'nl.eveoh'
 
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 jar {
     manifest {
