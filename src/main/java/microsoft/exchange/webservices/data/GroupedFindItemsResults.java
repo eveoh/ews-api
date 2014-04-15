@@ -8,6 +8,8 @@ package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Represents the results of an item search operation.
@@ -118,4 +120,7 @@ public final class GroupedFindItemsResults<TItem extends Item> implements Iterab
         return this.itemGroups.iterator();
     }
 
+    public Stream<ItemGroup<TItem>> stream() {
+        return StreamSupport.stream(spliterator(), false);
+    }
 }
