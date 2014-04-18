@@ -161,6 +161,17 @@ class EwsUtilities {
                 }
             });
 
+    private static DateFormat utcDateTimeFormatter;
+    static {
+        utcDateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        utcDateTimeFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+    }
+
+    private static DateFormat utcDateFormatter;
+    static {
+        utcDateFormatter = new SimpleDateFormat("yyyy-MM-dd'Z'");
+        utcDateFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+    }
 
     /**
      * Copies source stream to target.
@@ -493,9 +504,7 @@ class EwsUtilities {
         writer.writeAttribute("Tag", traceTag);
         writer.writeAttribute("Tid", Thread.currentThread().getId() + "");
         Date d = new Date();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss'Z'");
-        df.setTimeZone(TimeZone.getTimeZone("UTC"));
-        String formattedString = df.format(d);
+        String formattedString = utcDateTimeFormatter.format(d);
         writer.writeAttribute("Time", formattedString);
 
         if (includeVersion) {
@@ -718,8 +727,7 @@ class EwsUtilities {
         }
         else if (cls.isInstance(new Date())) {
             Object o = null;
-            DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-            return (T) df.parse(value);
+            return (T) utcDateTimeFormatter.parse(value);
         }
         else if (cls.isInstance(Boolean.valueOf(false)))
         // else if( cls.isInstance(new Boolean(false)))
@@ -802,9 +810,7 @@ class EwsUtilities {
      * @return String representation of DateTime.
      */
     static String dateTimeToXSDate(Date date) {
-        String format = "yyyy-MM-dd'Z'";
-        DateFormat utcFormatter = new SimpleDateFormat(format);
-        return utcFormatter.format(date);
+        return utcDateFormatter.format(date);
     }
 
     /**
@@ -814,9 +820,7 @@ class EwsUtilities {
      * @return String representation of DateTime.
      */
     protected static String dateTimeToXSDateTime(Date date) {
-        String format = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-        DateFormat utcFormatter = new SimpleDateFormat(format);
-        return utcFormatter.format(date);
+        return utcDateTimeFormatter.format(date);
     }
 
     /**
