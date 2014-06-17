@@ -458,17 +458,20 @@ public abstract class ExchangeServiceBase {
             if (dateString.endsWith("Z")) {
                 // String in UTC format yyyy-MM-ddTHH:mm:ssZ
                 utcFormatter = new SimpleDateFormat(utcPattern);
+                utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
                 try {
                     dt = utcFormatter.parse(dateString);
                 }
                 catch (ParseException e) {
                     utcFormatter = new SimpleDateFormat(pattern);
+                    utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
                     //	dateString = dateString.substring(0, 10)+"T12:00:00Z";
                     try {
                         dt = utcFormatter.parse(dateString);
                     }
                     catch (ParseException e1) {
                         utcFormatter = new SimpleDateFormat(localPattern1);
+                        utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 
                         try {
                             dt = utcFormatter.parse(dateString);
@@ -476,6 +479,7 @@ public abstract class ExchangeServiceBase {
                         catch (ParseException ex) {
 
                             utcFormatter = new SimpleDateFormat(utcPattern1);
+                            utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
                         }
                         try {
                             dt = utcFormatter.parse(dateString);
@@ -491,6 +495,7 @@ public abstract class ExchangeServiceBase {
             else if (dateString.endsWith("z")) {
                 // String in UTC format yyyy-MM-ddTHH:mm:ssZ
                 utcFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'z'");
+                utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
                 try {
                     dt = utcFormatter.parse(dateString);
                 }
@@ -512,11 +517,13 @@ public abstract class ExchangeServiceBase {
                     dateString = String.format("%sGMT%s", date, zone);
                     try {
                         utcFormatter = new SimpleDateFormat(localPattern);
+                        utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
                         dt = utcFormatter.parse(dateString);
                     }
                     catch (ParseException e) {
                         try {
                             utcFormatter = new SimpleDateFormat(pattern);
+                            utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
                             dt = utcFormatter.parse(dateString);
                         }
                         catch (ParseException ex) {
@@ -527,6 +534,7 @@ public abstract class ExchangeServiceBase {
                 else {
                     // Invalid format
                     utcFormatter = new SimpleDateFormat(localPattern2);
+                    utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
                     try {
                         dt = utcFormatter.parse(dateString);
                     }
@@ -564,10 +572,10 @@ public abstract class ExchangeServiceBase {
      * @return String representation of DateTime in yyyy-MM-ddTHH:mm:ssZ format.
      */
     protected String convertDateTimeToUniversalDateTimeString(Date dt) {
-
-        DateFormat utcFormatter = null;
+        DateFormat utcFormatter;
         String utcPattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
         utcFormatter = new SimpleDateFormat(utcPattern);
+        utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
         return utcFormatter.format(dt);
     }
 
