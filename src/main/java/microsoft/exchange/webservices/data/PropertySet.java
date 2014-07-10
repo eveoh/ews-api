@@ -9,6 +9,8 @@ package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.*;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Represents a set of item or folder properties. Property sets are used to indicate what properties of an item or
@@ -512,4 +514,7 @@ public final class PropertySet implements ISelfValidate, Iterable<PropertyDefini
         return this.additionalProperties.iterator();
     }
 
+    public Stream<PropertyDefinitionBase> stream() {
+        return StreamSupport.stream(spliterator(), false);
+    }
 }

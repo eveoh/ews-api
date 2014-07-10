@@ -9,6 +9,8 @@ package microsoft.exchange.webservices.data;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Represents a collection of items.
@@ -116,4 +118,7 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty im
         return this.items.iterator();
     }
 
+    public Stream<TItem> stream() {
+        return StreamSupport.stream(spliterator(), false);
+    }
 }

@@ -9,6 +9,8 @@ package microsoft.exchange.webservices.data;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Represents a collection of properties that can be sent to and retrieved from EWS.
@@ -431,5 +433,9 @@ public abstract class ComplexPropertyCollection<TComplexProperty extends Complex
     public boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer, ServiceObject ewsObject) throws Exception {
         // Use the default XML serializer.
         return false;
+    }
+
+    public Stream<TComplexProperty> stream() {
+        return StreamSupport.stream(spliterator(), false);
     }
 }

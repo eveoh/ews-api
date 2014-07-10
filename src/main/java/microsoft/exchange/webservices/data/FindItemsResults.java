@@ -9,6 +9,8 @@ package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Represents the results of an item search operation.
@@ -115,6 +117,10 @@ public final class FindItemsResults<TItem extends Item> implements Iterable<Item
     @Override
     public Iterator<Item> iterator() {
         return (Iterator<Item>) this.items.iterator();
+    }
+
+    public Stream<Item> stream() {
+        return StreamSupport.stream(spliterator(), false);
     }
 
 }
