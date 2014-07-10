@@ -118,7 +118,7 @@ public final class WebCredentials extends ExchangeCredentials {
             client.setUseDefaultCredentials(true);
         }
         else {
-            client.setCredentails(domain, user, pwd);
+            client.setCredentials(domain, user, pwd);
         }
     }
 

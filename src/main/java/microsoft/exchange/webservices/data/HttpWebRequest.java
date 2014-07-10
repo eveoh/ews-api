@@ -419,12 +419,12 @@ abstract class HttpWebRequest {
     }
 
     /**
-     * Sets the credentails.
+     * Sets the credentials.
      *
      * @param emailAddress the email-id
      * @param pwd          the password
      */
-    public void setCredentails(String domain, String user, String pwd) {
+    public void setCredentials(String domain, String user, String pwd) {
         this.domain = domain;
         this.userName = user;
         this.password = pwd;
