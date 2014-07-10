@@ -8,7 +8,6 @@ package microsoft.exchange.webservices.data;
 
 import org.apache.commons.httpclient.Cookie;
 import org.apache.commons.httpclient.HttpConnectionManager;
-import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -106,21 +105,13 @@ public abstract class ExchangeServiceBase {
 
     private WebProxy webProxy;
 
-    private HttpConnectionManager simpleHttpConnectionManager = new MultiThreadedHttpConnectionManager();
+    private HttpConnectionManager httpConnectionManager;
 
     HttpClientWebRequest request = null;
 
     private Cookie[] cookies = null;
 
     // protected static HttpStatusCode AccountIsLocked = (HttpStatusCode)456;
-
-    /**
-     * Static members
-     */
-
-    protected HttpConnectionManager getSimpleHttpConnectionManager() {
-        return simpleHttpConnectionManager;
-    }
 
     /**
      * Default UserAgent.
@@ -132,7 +123,7 @@ public abstract class ExchangeServiceBase {
      * @param requestedServerVersion
      */
     protected ExchangeServiceBase(ExchangeServiceBase service, ExchangeVersion requestedServerVersion) {
-        this(requestedServerVersion);
+        this(requestedServerVersion, service.getHttpConnectionManager());
         this.useDefaultCredentials = service.getUseDefaultCredentials();
         this.credentials = service.getCredentials();
         this.traceEnabled = service.isTraceEnabled();
@@ -182,9 +173,10 @@ public abstract class ExchangeServiceBase {
         this(TimeZone.getDefault());
     }
 
-    protected ExchangeServiceBase(ExchangeVersion requestedServerVersion, TimeZone timeZone) {
+    protected ExchangeServiceBase(ExchangeVersion requestedServerVersion, TimeZone timeZone, HttpConnectionManager httpConnectionManager) {
         this(timeZone);
         this.requestedServerVersion = requestedServerVersion;
+        this.httpConnectionManager = httpConnectionManager;
     }
 
     protected ExchangeServiceBase(TimeZone timeZone) {
@@ -232,7 +224,7 @@ public abstract class ExchangeServiceBase {
             throw new ServiceLocalException(strErr);
         }
 
-        request = new HttpClientWebRequest(this.simpleHttpConnectionManager);
+        request = new HttpClientWebRequest(this.httpConnectionManager);
         try {
             request.setUrl(url.toURL());
         }
@@ -595,11 +587,12 @@ public abstract class ExchangeServiceBase {
      *
      * @param requestedServerVersion The requested server version.
      */
-    protected ExchangeServiceBase(ExchangeVersion requestedServerVersion) {
+    protected ExchangeServiceBase(ExchangeVersion requestedServerVersion, HttpConnectionManager httpConnectionManager) {
         // Removed because TimeZone class in Java doesn't maintaining the
         //history of time change rules for a given time zone
         //this(requestedServerVersion, TimeZone.getDefault());
         this.requestedServerVersion = requestedServerVersion;
+        this.httpConnectionManager = httpConnectionManager;
     }
 
 
@@ -1030,5 +1023,9 @@ public abstract class ExchangeServiceBase {
 
             return ExchangeServiceBase.binarySecret;
         }
+    }
+
+    public HttpConnectionManager getHttpConnectionManager() {
+        return httpConnectionManager;
     }
 }
