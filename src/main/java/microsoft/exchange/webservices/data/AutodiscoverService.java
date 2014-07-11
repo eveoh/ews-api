@@ -6,6 +6,8 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
+import org.apache.commons.httpclient.HttpConnectionManager;
+
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
 import java.net.MalformedURLException;
@@ -206,8 +208,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
             urlOutStream.flush();
             urlOutStream.close();
             memoryStream.close();
-        }
-        else {
+        } else {
             PrintWriter writer = new PrintWriter(urlOutStream);
             this.writeLegacyAutodiscoverRequest(emailAddress, settings, writer);
 
@@ -215,7 +216,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
             writer.flush();
             urlOutStream.flush();
             urlOutStream.close();
-			/* Flush End */
+            /* Flush End */
         }
         request.executeRequest();
         request.getResponseCode();
@@ -239,8 +240,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
                 int data = serviceResponseStream.read();
                 if (-1 == data) {
                     break;
-                }
-                else {
+                } else {
                     memoryStream.write(data);
                 }
             }
@@ -252,8 +252,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
             reader.read(new XMLNodeType(XMLNodeType.START_DOCUMENT));
             settings.loadFromXml(reader);
 
-        }
-        else {
+        } else {
             EwsXmlReader reader = new EwsXmlReader(serviceResponseStream);
             reader.read(new XMLNodeType(XMLNodeType.START_DOCUMENT));
             settings.loadFromXml(reader);
@@ -262,8 +261,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
         serviceResponseStream.close();
         try {
             request.close();
-        }
-        catch (Exception e2) {
+        } catch (Exception e2) {
             request = null;
         }
         return settings;
@@ -306,11 +304,10 @@ public final class AutodiscoverService extends ExchangeServiceBase
         this.traceMessage(TraceFlags.AutodiscoverConfiguration,
                 String.format("Trying to get Autodiscover redirection URL from %s.", url));
 
-        HttpWebRequest request = new HttpClientWebRequest(this.getSimpleHttpConnectionManager());
+        HttpWebRequest request = new HttpClientWebRequest(this.getHttpConnectionManager());
         try {
             request.setUrl(URI.create(url).toURL());
-        }
-        catch (MalformedURLException e) {
+        } catch (MalformedURLException e) {
             String strErr = String.format("Incorrect format : %s", url);
             throw new ServiceLocalException(strErr);
         }
@@ -332,8 +329,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
         }
         try {
             request.prepareAsyncConnection();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             ex.getMessage();
             request = null;
         }
@@ -348,8 +344,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
         }
         try {
             request.close();
-        }
-        catch (Exception e2) {
+        } catch (Exception e2) {
             request = null;
         }
         this.traceMessage(TraceFlags.AutodiscoverConfiguration, "No Autodiscover redirection URL was returned.");
@@ -386,8 +381,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
 
                         return true;
                     }
-                }
-                catch (URISyntaxException ex) {
+                } catch (URISyntaxException ex) {
                     this.traceMessage(TraceFlags.AutodiscoverConfiguration,
                             String.format("Invalid redirection URL " + "was returned: '%s'", location));
                     return false;
@@ -424,8 +418,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
         else if (!(this.domain == null || this.domain.isEmpty())) {
             URI autodiscoverUrl = new URI(String.format(AutodiscoverLegacyHttpsUrl, this.domain));
             return this.getLegacyUserSettingsAtUrl(cls, emailAddress, autodiscoverUrl);
-        }
-        else {
+        } else {
             // No Url or Domain specified, need to 
             //figure out which endpoint to use.
             int currentHop = 1;
@@ -505,8 +498,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
                             urls.add(currentUrlIndex, new URI(settings.getRedirectTarget()));
 
                             break;
-                        }
-                        else {
+                        } else {
                             throw new AutodiscoverLocalException(Strings.MaximumRedirectionHopsExceeded);
                         }
                     case RedirectAddress:
@@ -525,8 +517,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
 
                             return this.internalGetLegacyUserSettings(cls, settings.getRedirectTarget(),
                                     redirectionEmailAddresses, currentHop);
-                        }
-                        else {
+                        } else {
                             throw new AutodiscoverLocalException(Strings.MaximumRedirectionHopsExceeded);
                         }
                     case Error:
@@ -542,8 +533,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
                             delayedException =
                                     new AutodiscoverRemoteException(Strings.AutodiscoverError, settings.getError());
                             currentUrlIndex++;
-                        }
-                        else {
+                        } else {
                             throw new AutodiscoverRemoteException(Strings.AutodiscoverError, settings.getError());
                         }
                         break;
@@ -552,23 +542,20 @@ public final class AutodiscoverService extends ExchangeServiceBase
                                 "An unexpected error has occured. " + "This code path should never be reached.");
                         break;
                 }
-            }
-            catch (XMLStreamException ex) {
+            } catch (XMLStreamException ex) {
                 this.traceMessage(TraceFlags.AutodiscoverConfiguration,
                         String.format("%s failed: XML parsing error: %s", url, ex.getMessage()));
 
                 // The content at the URL wasn't a valid response, let's try the
                 // next.
                 currentUrlIndex++;
-            }
-            catch (IOException ex) {
+            } catch (IOException ex) {
                 this.traceMessage(TraceFlags.AutodiscoverConfiguration,
                         String.format("%s failed: I/O error: %s", url, ex.getMessage()));
 
                 // The content at the URL wasn't a valid response, let's try the next.
                 currentUrlIndex++;
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 HttpWebRequest response = null;
                 URI redirectUrl;
                 OutParam<URI> outParam1 = new OutParam<URI>();
@@ -579,8 +566,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
 
                     currentHop.setParam(currentHop.getParam().intValue() + 1);
                     urls.add(currentUrlIndex, redirectUrl);
-                }
-                else {
+                } else {
                     if (response != null) {
                         this.processHttpErrorResponse(response, ex);
 
@@ -608,8 +594,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
                 this.tryLastChanceHostRedirection(cls, emailAddress, redirectionUrl, outParam)) {
             settings = outParam.getParam();
             return settings;
-        }
-        else {
+        } else {
             // Getting a redirection URL from an HTTP GET failed too. As a last
             // chance, try to get an appropriate SRV Record
             // using DnsQuery. If successful, use this redirection URL to get
@@ -623,8 +608,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
             // If there was an earlier exception, throw it.
             else if (delayedException != null) {
                 throw delayedException;
-            }
-            else {
+            } else {
                 throw new AutodiscoverLocalException(Strings.AutodiscoverCouldNotBeLocated);
             }
         }
@@ -648,8 +632,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
                     String.format("Autodiscover host %s was returned.", hostname));
 
             return new URI(String.format(AutodiscoverLegacyHttpsUrl, hostname));
-        }
-        else {
+        } else {
             this.traceMessage(TraceFlags.AutodiscoverConfiguration,
                     "No matching Autodiscover DNS SRV records were found.");
 
@@ -712,8 +695,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
                         case RedirectUrl:
                             try {
                                 redirectionUrl = new URI(settings.getParam().getRedirectTarget());
-                            }
-                            catch (URISyntaxException ex) {
+                            } catch (URISyntaxException ex) {
                                 this.traceMessage(TraceFlags.
                                         AutodiscoverConfiguration, String.format("Service " +
                                         "returned " +
@@ -732,21 +714,18 @@ public final class AutodiscoverService extends ExchangeServiceBase
 
                             return false;
                     }
-                }
-                catch (XMLStreamException ex) {
+                } catch (XMLStreamException ex) {
                     // If the response is malformed, it wasn't a valid
                     // Autodiscover endpoint.
                     this.traceMessage(TraceFlags.AutodiscoverConfiguration,
                             String.format("%s failed: XML parsing error: %s", redirectionUrl.toString(),
                                     ex.getMessage()));
                     return false;
-                }
-                catch (IOException ex) {
+                } catch (IOException ex) {
                     this.traceMessage(TraceFlags.AutodiscoverConfiguration,
                             String.format("%s failed: I/O error: %s", redirectionUrl, ex.getMessage()));
                     return false;
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
 
                     HttpWebRequest response = null;
                     OutParam<URI> outParam = new OutParam<URI>();
@@ -756,8 +735,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
                                 "redirection" +
                                 " to url %s", redirectionUrl));
 
-                    }
-                    else {
+                    } else {
                         if (response != null) {
                             this.processHttpErrorResponse(response, ex);
                         }
@@ -785,8 +763,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
 
         if (redirectionEmailAddresses.contains(emailAddress)) {
             this.enableScpLookup = false;
-        }
-        else {
+        } else {
             redirectionEmailAddresses.add(emailAddress);
         }
     }
@@ -893,25 +870,24 @@ public final class AutodiscoverService extends ExchangeServiceBase
         return (GetUserSettingsResponseCollection) this
                 .getSettings(GetUserSettingsResponseCollection.class, UserSettingName.class, smtpAddresses, settings,
                         null, this, new IFuncDelegate<String>() {
-                    public String func() throws FormatException {
-                        return EwsUtilities.domainFromEmailAddress(smtpAddresses.get(0));
-                    }
-                });
+                            public String func() throws FormatException {
+                                return EwsUtilities.domainFromEmailAddress(smtpAddresses.get(0));
+                            }
+                        });
     }
 
     /**
      * Gets user or domain settings using Autodiscover SOAP service.
      *
-     * @param <TGetSettingsResponseCollection>
-     *                          the generic type
-     * @param <TSettingName>    the generic type
-     * @param cls               the cls
-     * @param cls1              the cls1
-     * @param identities        Either the domains or the SMTP addresses of the users.
-     * @param settings          The settings.
-     * @param requestedVersion  Requested version of the Exchange service.
-     * @param getSettingsMethod The method to use.
-     * @param getDomainMethod   The method to calculate the domain value.
+     * @param <TGetSettingsResponseCollection> the generic type
+     * @param <TSettingName>                   the generic type
+     * @param cls                              the cls
+     * @param cls1                             the cls1
+     * @param identities                       Either the domains or the SMTP addresses of the users.
+     * @param settings                         The settings.
+     * @param requestedVersion                 Requested version of the Exchange service.
+     * @param getSettingsMethod                The method to use.
+     * @param getDomainMethod                  The method to calculate the domain value.
      * @return TGetSettingsResponse Collection.
      * @throws Exception the exception
      */
@@ -1019,8 +995,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
                 this.url = autodiscoverUrl;
 
                 return response;
-            }
-            else {
+            } else {
                 throw new AutodiscoverLocalException(Strings.AutodiscoverCouldNotBeLocated);
             }
         }
@@ -1058,8 +1033,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
                                 response.getRedirectionUrl()));
 
                 autodiscoverUrl = response.getRedirectionUrl();
-            }
-            else {
+            } else {
                 return response;
             }
         }
@@ -1088,10 +1062,10 @@ public final class AutodiscoverService extends ExchangeServiceBase
         return (GetDomainSettingsResponseCollection) this
                 .getSettings(GetDomainSettingsResponseCollection.class, DomainSettingName.class, domains, settings,
                         requestedVersion, this, new IFuncDelegate<String>() {
-                    public String func() {
-                        return domains.get(0);
-                    }
-                });
+                            public String func() {
+                                return domains.get(0);
+                            }
+                        });
     }
 
     /**
@@ -1123,8 +1097,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
             // Did we get redirected?
             if (response.getErrorCode() == AutodiscoverErrorCode.RedirectUrl && response.getRedirectionUrl() != null) {
                 autodiscoverUrl = response.getRedirectionUrl();
-            }
-            else {
+            } else {
                 return response;
             }
         }
@@ -1147,8 +1120,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
         OutParam<URI> outParam = new OutParam<URI>();
         if (this.tryGetAutodiscoverEndpointUrl(host, outParam)) {
             return autodiscoverUrl;
-        }
-        else {
+        } else {
             throw new AutodiscoverLocalException(Strings.NoSoapOrWsSecurityEndpointAvailable);
         }
     }
@@ -1239,8 +1211,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
             return true;
 
 
-        }
-        else {
+        } else {
             this.traceMessage(TraceFlags.AutodiscoverConfiguration,
                     String.format("No Autodiscover endpoints " + "are available for host %s", host));
 
@@ -1313,11 +1284,10 @@ public final class AutodiscoverService extends ExchangeServiceBase
 
             endpoints.setParam(EnumSet.of(AutodiscoverEndpoints.None));
 
-            HttpWebRequest request = new HttpClientWebRequest(this.getSimpleHttpConnectionManager());
+            HttpWebRequest request = new HttpClientWebRequest(this.getHttpConnectionManager());
             try {
                 request.setUrl(autoDiscoverUrl.toURL());
-            }
-            catch (MalformedURLException e) {
+            } catch (MalformedURLException e) {
                 String strErr = String.format("Incorrect format : %s", url);
                 throw new ServiceLocalException(strErr);
             }
@@ -1342,8 +1312,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
             }
             try {
                 request.prepareAsyncConnection();
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 ex.getMessage();
                 request = null;
             }
@@ -1357,8 +1326,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
                             String.format("Host returned redirection to host '%s'", redirectUrl.getHost()));
 
                     host = redirectUrl.getHost();
-                }
-                else {
+                } else {
                     endpoints.setParam(this.getEndpointsFromHttpWebResponse(request));
 
                     this.traceMessage(TraceFlags.AutodiscoverConfiguration,
@@ -1366,14 +1334,12 @@ public final class AutodiscoverService extends ExchangeServiceBase
 
                     return true;
                 }
-            }
-            else {
+            } else {
                 return false;
             }
             try {
                 request.close();
-            }
-            catch (Exception e2) {
+            } catch (Exception e2) {
                 request = null;
             }
         }
@@ -1442,8 +1408,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
             if (contentType.toLowerCase().startsWith("text/") || contentType.toLowerCase().
                     startsWith("application/soap")) {
                 this.traceXml(TraceFlags.AutodiscoverResponse, memoryStream);
-            }
-            else {
+            } else {
                 this.traceMessage(TraceFlags.AutodiscoverResponse, "Non-textual response");
             }
         }
@@ -1506,30 +1471,11 @@ public final class AutodiscoverService extends ExchangeServiceBase
     /**
      * Initializes a new instance of the "AutodiscoverService" class.
      *
-     * @throws ArgumentException
-     */
-    public AutodiscoverService() throws ArgumentException {
-        this(ExchangeVersion.Exchange2010);
-    }
-
-    /**
-     * Initializes a new instance of the "AutodiscoverService" class.
-     *
      * @param requestedServerVersion The requested server version.
      * @throws ArgumentException
      */
-    public AutodiscoverService(ExchangeVersion requestedServerVersion) throws ArgumentException {
-        this(null, null, requestedServerVersion);
-    }
-
-    /**
-     * Initializes a new instance of the "AutodiscoverService" class.
-     *
-     * @param domain The domain that will be used to determine the URL of the service.
-     * @throws ArgumentException
-     */
-    public AutodiscoverService(String domain) throws ArgumentException {
-        this(null, domain);
+    public AutodiscoverService(ExchangeVersion requestedServerVersion, HttpConnectionManager httpConnectionManager) throws ArgumentException {
+        this(null, null, requestedServerVersion, httpConnectionManager);
     }
 
     /**
@@ -1539,18 +1485,8 @@ public final class AutodiscoverService extends ExchangeServiceBase
      * @param requestedServerVersion The requested server version.
      * @throws ArgumentException
      */
-    public AutodiscoverService(String domain, ExchangeVersion requestedServerVersion) throws ArgumentException {
-        this(null, domain, requestedServerVersion);
-    }
-
-    /**
-     * Initializes a new instance of the "AutodiscoverService" class.
-     *
-     * @param url The URL of the service.
-     * @throws ArgumentException
-     */
-    public AutodiscoverService(URI url) throws ArgumentException {
-        this(url, url.getHost());
+    public AutodiscoverService(String domain, ExchangeVersion requestedServerVersion, HttpConnectionManager httpConnectionManager) throws ArgumentException {
+        this(null, domain, requestedServerVersion, httpConnectionManager);
     }
 
     /**
@@ -1560,8 +1496,8 @@ public final class AutodiscoverService extends ExchangeServiceBase
      * @param requestedServerVersion The requested server version.
      * @throws ArgumentException
      */
-    public AutodiscoverService(URI url, ExchangeVersion requestedServerVersion) throws ArgumentException {
-        this(url, url.getHost(), requestedServerVersion);
+    public AutodiscoverService(URI url, ExchangeVersion requestedServerVersion, HttpConnectionManager httpConnectionManager) throws ArgumentException {
+        this(url, url.getHost(), requestedServerVersion, httpConnectionManager);
     }
 
     /**
@@ -1587,9 +1523,9 @@ public final class AutodiscoverService extends ExchangeServiceBase
      * @param requestedServerVersion The requested server version.
      * @throws ArgumentException
      */
-    protected AutodiscoverService(URI url, String domain, ExchangeVersion requestedServerVersion) throws
-            ArgumentException {
-        super(requestedServerVersion);
+    protected AutodiscoverService(URI url, String domain, ExchangeVersion requestedServerVersion, HttpConnectionManager httpConnectionManager) throws
+    ArgumentException {
+        super(requestedServerVersion, httpConnectionManager);
         EwsUtilities.validateDomainNameAllowNull(domain, "domain");
 
         this.url = url;
@@ -1624,7 +1560,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
      * @param userSettingNames The user setting names.
      * @return A UserResponse object containing the requested settings for the specified user.
      * @throws Exception the exception
-     *                   <p/>
+     *                   <p>
      *                   This method handles will run the entire Autodiscover "discovery" algorithm and will follow
      *                   address
      *                   and URL redirections.
@@ -1646,8 +1582,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
 
         if (this.getRequestedServerVersion().compareTo(MinimumRequestVersionForAutoDiscoverSoapService) < 0) {
             return this.internalGetLegacyUserSettings(userSmtpAddress, requestedSettings);
-        }
-        else {
+        } else {
             return this.internalGetSoapUserSettings(userSmtpAddress, requestedSettings);
         }
 
@@ -1811,7 +1746,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
 
     /**
      * Gets the domain this service is bound to. When this property is set, the domain
-     * <p/>
+     * <p>
      * name is used to automatically determine the Autodiscover service URL.
      *
      * @return the domain
@@ -1935,11 +1870,9 @@ public final class AutodiscoverService extends ExchangeServiceBase
     public Object func(List arg1, List arg2, ExchangeVersion arg3, URI arg4) throws ServiceLocalException, Exception {
         if (arg2.get(0).getClass().equals(DomainSettingName.class)) {
             return internalGetDomainSettings(arg1, arg2, arg3, arg4);
-        }
-        else if (arg2.get(0).getClass().equals(UserSettingName.class)) {
+        } else if (arg2.get(0).getClass().equals(UserSettingName.class)) {
             return internalGetUserSettings(arg1, arg2, arg3, arg4);
-        }
-        else {
+        } else {
             return null;
         }
     }

@@ -6,6 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
+import org.apache.commons.httpclient.HttpConnectionManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -3309,8 +3310,8 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
      *
      * @param requestedServerVersion the requested server version
      */
-    public ExchangeService(ExchangeVersion requestedServerVersion) {
-        super(requestedServerVersion);
+    public ExchangeService(ExchangeVersion requestedServerVersion, HttpConnectionManager httpConnectionManager) {
+        super(requestedServerVersion, httpConnectionManager);
     }
 
     /**
@@ -3320,8 +3321,8 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
      * @param requestedServerVersion The version of EWS that the service targets.
      * @param timeZone               The time zone to which the service is scoped.
      */
-    public ExchangeService(ExchangeVersion requestedServerVersion, TimeZone timeZone) {
-        super(requestedServerVersion, timeZone);
+    public ExchangeService(ExchangeVersion requestedServerVersion, TimeZone timeZone, HttpConnectionManager httpConnectionManager) {
+        super(requestedServerVersion, timeZone, httpConnectionManager);
     }
 
     // Utilities
