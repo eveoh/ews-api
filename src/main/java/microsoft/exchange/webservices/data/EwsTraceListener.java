@@ -6,7 +6,8 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-import java.io.PrintStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * * EwsTraceListener logs request/responses to a text writer.
@@ -16,25 +17,12 @@ import java.io.PrintStream;
 @SuppressWarnings("ALL")
 class EwsTraceListener implements ITraceListener {
 
-    /**
-     * The writer.
-     */
-    private PrintStream writer;
-
-    /**
-     * Initializes a new instance of the class. Uses System.Out as output.
-     */
-    protected EwsTraceListener() {
-        this(System.out);
-    }
+    private final Logger logger = LoggerFactory.getLogger(EwsTraceListener.class);
 
     /**
      * Initializes a new instance of the class.
-     *
-     * @param writer the writer
      */
-    protected EwsTraceListener(PrintStream writer) {
-        this.writer = writer;
+    protected EwsTraceListener() {
     }
 
     /**
@@ -45,10 +33,7 @@ class EwsTraceListener implements ITraceListener {
      */
     @Override
     public void trace(String traceType, String traceMessage) {
-        // this.writer.println(String.format("%s : %s", traceType,
-        // traceMessage));
-        this.writer.println(traceMessage);
-        this.writer.flush();
+        logger.trace(traceType + " - " + traceMessage);
     }
 
 }

@@ -10,6 +10,8 @@ import org.apache.commons.httpclient.ConnectTimeoutException;
 import org.apache.commons.httpclient.HttpClientError;
 import org.apache.commons.httpclient.params.HttpConnectionParams;
 import org.apache.commons.httpclient.protocol.SecureProtocolSocketFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.net.SocketFactory;
 import javax.net.ssl.SSLContext;
@@ -57,6 +59,8 @@ class EwsSSLProtocolSocketFactory implements SecureProtocolSocketFactory {
     /** The X509 TrustManager. */
     static TrustManager trustManager = null;
 
+    private static final Logger logger = LoggerFactory.getLogger(EwsSSLProtocolSocketFactory.class);
+
     /**
      * Constructor for EasySSLProtocolSocketFactory.
      */
@@ -71,7 +75,7 @@ class EwsSSLProtocolSocketFactory implements SecureProtocolSocketFactory {
             return context;
         }
         catch (Exception e) {
-            System.out.println(e.getMessage() + e);
+            logger.error(e.getMessage(), e);
             throw new HttpClientError(e.toString());
         }
     }
