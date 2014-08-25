@@ -685,16 +685,15 @@ abstract class ServiceRequestBase {
     }
 
     /**
-     * * Validates request parameters, and emits the request to the server.
+     * Validates request parameters, and emits the request to the server.
      *
-     * @param request The request.
      * @return The response returned by the server.
      */
-    protected HttpWebRequest validateAndEmitRequest(OutParam<HttpWebRequest> request) throws ServiceLocalException,
+    protected HttpWebRequest validateAndEmitRequest() throws ServiceLocalException,
             Exception {
         this.validate();
 
-        request = this.buildEwsHttpWebRequest();
+        HttpWebRequest request = this.buildEwsHttpWebRequest();
         return this.getEwsHttpWebResponse(request);
     }
 
@@ -703,28 +702,28 @@ abstract class ServiceRequestBase {
      *
      * @returns An IEwsHttpWebRequest instance
      */
-    protected OutParam<HttpWebRequest> buildEwsHttpWebRequest() throws Exception {
-        OutParam<HttpWebRequest> outparam = new OutParam<HttpWebRequest>();
-        try {
+    protected HttpWebRequest buildEwsHttpWebRequest() throws Exception {
+        HttpWebRequest request = null;
 
-            outparam.setParam(this.getService().prepareHttpWebRequest());
+        try {
+            request = this.getService().prepareHttpWebRequest();
             AsyncExecutor ae = new AsyncExecutor();
 
             // ExecutorService es = CallableSingleTon.getExecutor();
-            Callable getStream = new GetStream(outparam.getParam(), "getOutputStream");
+            Callable getStream = new GetStream(request, "getOutputStream");
             Future task = ae.submit(getStream, null);
             ae.shutdown();
-            this.getService().traceHttpRequestHeaders(TraceFlags.EwsRequestHttpHeaders, outparam.getParam());
+            this.getService().traceHttpRequestHeaders(TraceFlags.EwsRequestHttpHeaders, request);
 
             boolean needSignature =
                     this.getService().getCredentials() != null && this.getService().getCredentials().isNeedSignature();
             boolean needTrace = this.getService().isTraceEnabledFor(TraceFlags.EwsRequest);
 
-			/*
-			 * If tracing is enabled, we generate the request in-memory so that
-			 * we can pass it along to the ITraceListener. Then we copy the
-			 * stream to the request stream.
-			 */
+            /*
+             * If tracing is enabled, we generate the request in-memory so that
+             * we can pass it along to the ITraceListener. Then we copy the
+             * stream to the request stream.
+             */
 
             ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
 
@@ -758,11 +757,11 @@ abstract class ServiceRequestBase {
 
             }
 
-            return outparam;
+            return request;
         }
         catch (HTTPException e) {
             if (e.getStatusCode() == WebExceptionStatus.ProtocolError.ordinal() && e.getCause() != null) {
-                this.processWebException(e, outparam.getParam());
+                this.processWebException(e, request);
             }
 
             // Wrap exception if the above code block didn't throw
@@ -780,8 +779,7 @@ abstract class ServiceRequestBase {
      * @param request The specified HttpWebRequest
      * @returns An HttpWebResponse instance
      */
-    protected HttpWebRequest getEwsHttpWebResponse(OutParam<HttpWebRequest> outparam) throws Exception {
-        HttpWebRequest request = outparam.getParam();
+    protected HttpWebRequest getEwsHttpWebResponse(HttpWebRequest request) throws Exception {
         int code;
 
         try {
