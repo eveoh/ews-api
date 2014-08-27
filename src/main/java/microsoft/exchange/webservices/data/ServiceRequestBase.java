@@ -256,6 +256,8 @@ abstract class ServiceRequestBase {
     }
 
     /**
+     * FIXME This method is unused.
+     *
      * * Send request and get response.
      *
      * @return HttpWebRequest object from which response stream can be read.
@@ -484,6 +486,8 @@ abstract class ServiceRequestBase {
     }
 
     /**
+     * FIXME This method is unused.
+     *
      * Ends getting the specified async HttpWebRequest object from the specified IEwsHttpWebRequest object with
      * exception
      * handling.
@@ -512,6 +516,7 @@ abstract class ServiceRequestBase {
             return request.getParam();
         }
         catch (HttpErrorException ex) {
+            // FIXME This check is bullshit. Why would one compare a HTTP status code with an enum ordinal... :')
             if (ex.getHttpErrorCode() == WebExceptionStatus.ProtocolError.ordinal()) {
                 this.processWebException(ex, request.getParam());
             }
@@ -611,7 +616,6 @@ abstract class ServiceRequestBase {
                 this.service.processHttpErrorResponse(req, webException);
             }
         }
-
     }
 
     /**
@@ -688,12 +692,18 @@ abstract class ServiceRequestBase {
      *
      * @return The response returned by the server.
      */
-    protected HttpWebRequest validateAndEmitRequest() throws ServiceLocalException,
-            Exception {
+    protected HttpWebRequest validateAndEmitRequest() throws ServiceLocalException, Exception {
         this.validate();
 
         HttpWebRequest request = this.buildEwsHttpWebRequest();
-        return this.getEwsHttpWebResponse(request);
+        try {
+            return this.getEwsHttpWebResponse(request);
+        } catch (HttpErrorException e) {
+            processWebException(e, request);
+
+            // Wrap exception if the above code block didn't throw
+            throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+        }
     }
 
     /**
@@ -768,22 +778,15 @@ abstract class ServiceRequestBase {
      * @returns An HttpWebResponse instance
      */
     protected HttpWebRequest getEwsHttpWebResponse(HttpWebRequest request) throws Exception {
-        int code;
-
         try {
+            request.executeRequest();
 
-            code = request.executeRequest();
-
-        }
-        catch (HttpErrorException ex) {
-            if (ex.getHttpErrorCode() == WebExceptionStatus.ProtocolError.ordinal() && ex.getMessage() != null) {
-                this.processWebException(ex, request);
+            if (request.getResponseCode() >= 400) {
+                throw new HttpErrorException(
+                        "The remote server returned an error: (" + request.getResponseCode() + ")" +
+                                request.getResponseText(), request.getResponseCode());
             }
-
-            // Wrap exception if the above code block didn't throw
-            throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, ex.getMessage()), ex);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             // Wrap exception.
             throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
         }

@@ -37,8 +37,9 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
      * @throws ServiceLocalException
      */
     protected Object internalExecute() throws Exception {
-        HttpWebRequest response = this.validateAndEmitRequest();
+        HttpWebRequest response = null;
         try {
+            response = this.validateAndEmitRequest();
             return this.readResponse(response);
         } catch (Exception e) {
             throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
