@@ -161,18 +161,6 @@ class EwsUtilities {
                 }
             });
 
-    private static DateFormat utcDateTimeFormatter;
-    static {
-        utcDateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        utcDateTimeFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-    }
-
-    private static DateFormat utcDateFormatter;
-    static {
-        utcDateFormatter = new SimpleDateFormat("yyyy-MM-dd'Z'");
-        utcDateFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-    }
-
     /**
      * Copies source stream to target.
      *
@@ -504,6 +492,9 @@ class EwsUtilities {
         writer.writeAttribute("Tag", traceTag);
         writer.writeAttribute("Tid", Thread.currentThread().getId() + "");
         Date d = new Date();
+
+        SimpleDateFormat utcDateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        utcDateTimeFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
         String formattedString = utcDateTimeFormatter.format(d);
         writer.writeAttribute("Time", formattedString);
 
@@ -726,6 +717,9 @@ class EwsUtilities {
             return (T) o;
         }
         else if (cls.isInstance(new Date())) {
+            SimpleDateFormat utcDateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            utcDateTimeFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+
             Object o = null;
             return (T) utcDateTimeFormatter.parse(value);
         }
@@ -810,6 +804,8 @@ class EwsUtilities {
      * @return String representation of DateTime.
      */
     static String dateTimeToXSDate(Date date) {
+        SimpleDateFormat utcDateFormatter = new SimpleDateFormat("yyyy-MM-dd'Z'");
+        utcDateFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
         return utcDateFormatter.format(date);
     }
 
@@ -820,6 +816,8 @@ class EwsUtilities {
      * @return String representation of DateTime.
      */
     protected static String dateTimeToXSDateTime(Date date) {
+        SimpleDateFormat utcDateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        utcDateTimeFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
         return utcDateTimeFormatter.format(date);
     }
 
