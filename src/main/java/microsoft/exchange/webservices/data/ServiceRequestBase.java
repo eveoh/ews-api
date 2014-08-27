@@ -7,7 +7,6 @@
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
-import javax.xml.ws.http.HTTPException;
 import java.io.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -746,9 +745,7 @@ abstract class ServiceRequestBase {
                     EwsUtilities.copyStream(memoryStream, serviceRequestStream);
                 }
 
-            }
-
-            else {
+            } else {
                 ByteArrayOutputStream requestStream = this.getWebRequestStream(task);
 
                 EwsServiceXmlWriter writer1 = new EwsServiceXmlWriter(this.getService(), requestStream);
@@ -758,16 +755,7 @@ abstract class ServiceRequestBase {
             }
 
             return request;
-        }
-        catch (HTTPException e) {
-            if (e.getStatusCode() == WebExceptionStatus.ProtocolError.ordinal() && e.getCause() != null) {
-                this.processWebException(e, request);
-            }
-
-            // Wrap exception if the above code block didn't throw
-            throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             // Wrap exception.
             throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
         }
