@@ -37,9 +37,9 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
      * @throws ServiceLocalException
      */
     protected Object internalExecute() throws Exception {
-        OutParam<HttpWebRequest> outParam = new OutParam<HttpWebRequest>();
-        HttpWebRequest response = this.validateAndEmitRequest(outParam);
+        HttpWebRequest response = null;
         try {
+            response = this.validateAndEmitRequest();
             return this.readResponse(response);
         } catch (Exception e) {
             throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
@@ -82,7 +82,7 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
     protected AsyncRequestResult beginExecute(AsyncCallback callback, Object state) throws Exception {
         this.validate();
 
-        HttpWebRequest request = (HttpWebRequest) this.buildEwsHttpWebRequest().getParam();
+        HttpWebRequest request = this.buildEwsHttpWebRequest();
 
         WebAsyncCallStateAnchor wrappedState =
                 new WebAsyncCallStateAnchor(this, request, callback /* user callback */, state /*user state*/);

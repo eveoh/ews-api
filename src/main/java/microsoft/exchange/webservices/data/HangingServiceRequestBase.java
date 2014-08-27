@@ -134,11 +134,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
     private HttpWebRequest response;
 
     /**
-     * Request to the server.
-     */
-    private HttpWebRequest request;
-
-    /**
      * Xml reader used to parse the response.
      */
     private EwsServiceMultiResponseXmlReader ewsXmlReader;
@@ -209,9 +204,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
      */
     protected void internalExecute() throws ServiceLocalException, Exception {
         synchronized (this) {
-            OutParam<HttpWebRequest> outParam = new OutParam<HttpWebRequest>();
-            this.response = this.validateAndEmitRequest(outParam);
-            this.request = outParam.getParam();
+            this.response = this.validateAndEmitRequest();
             this.internalOnConnect();
         }
     }

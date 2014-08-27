@@ -7,7 +7,6 @@
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
-import javax.xml.ws.http.HTTPException;
 import java.io.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -257,6 +256,8 @@ abstract class ServiceRequestBase {
     }
 
     /**
+     * FIXME This method is unused.
+     *
      * * Send request and get response.
      *
      * @return HttpWebRequest object from which response stream can be read.
@@ -485,6 +486,8 @@ abstract class ServiceRequestBase {
     }
 
     /**
+     * FIXME This method is unused.
+     *
      * Ends getting the specified async HttpWebRequest object from the specified IEwsHttpWebRequest object with
      * exception
      * handling.
@@ -513,6 +516,7 @@ abstract class ServiceRequestBase {
             return request.getParam();
         }
         catch (HttpErrorException ex) {
+            // FIXME This check is bullshit. Why would one compare a HTTP status code with an enum ordinal... :')
             if (ex.getHttpErrorCode() == WebExceptionStatus.ProtocolError.ordinal()) {
                 this.processWebException(ex, request.getParam());
             }
@@ -612,7 +616,6 @@ abstract class ServiceRequestBase {
                 this.service.processHttpErrorResponse(req, webException);
             }
         }
-
     }
 
     /**
@@ -685,17 +688,22 @@ abstract class ServiceRequestBase {
     }
 
     /**
-     * * Validates request parameters, and emits the request to the server.
+     * Validates request parameters, and emits the request to the server.
      *
-     * @param request The request.
      * @return The response returned by the server.
      */
-    protected HttpWebRequest validateAndEmitRequest(OutParam<HttpWebRequest> request) throws ServiceLocalException,
-            Exception {
+    protected HttpWebRequest validateAndEmitRequest() throws ServiceLocalException, Exception {
         this.validate();
 
-        request = this.buildEwsHttpWebRequest();
-        return this.getEwsHttpWebResponse(request);
+        HttpWebRequest request = this.buildEwsHttpWebRequest();
+        try {
+            return this.getEwsHttpWebResponse(request);
+        } catch (HttpErrorException e) {
+            processWebException(e, request);
+
+            // Wrap exception if the above code block didn't throw
+            throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+        }
     }
 
     /**
@@ -703,28 +711,28 @@ abstract class ServiceRequestBase {
      *
      * @returns An IEwsHttpWebRequest instance
      */
-    protected OutParam<HttpWebRequest> buildEwsHttpWebRequest() throws Exception {
-        OutParam<HttpWebRequest> outparam = new OutParam<HttpWebRequest>();
-        try {
+    protected HttpWebRequest buildEwsHttpWebRequest() throws Exception {
+        HttpWebRequest request = null;
 
-            outparam.setParam(this.getService().prepareHttpWebRequest());
+        try {
+            request = this.getService().prepareHttpWebRequest();
             AsyncExecutor ae = new AsyncExecutor();
 
             // ExecutorService es = CallableSingleTon.getExecutor();
-            Callable getStream = new GetStream(outparam.getParam(), "getOutputStream");
+            Callable getStream = new GetStream(request, "getOutputStream");
             Future task = ae.submit(getStream, null);
             ae.shutdown();
-            this.getService().traceHttpRequestHeaders(TraceFlags.EwsRequestHttpHeaders, outparam.getParam());
+            this.getService().traceHttpRequestHeaders(TraceFlags.EwsRequestHttpHeaders, request);
 
             boolean needSignature =
                     this.getService().getCredentials() != null && this.getService().getCredentials().isNeedSignature();
             boolean needTrace = this.getService().isTraceEnabledFor(TraceFlags.EwsRequest);
 
-			/*
-			 * If tracing is enabled, we generate the request in-memory so that
-			 * we can pass it along to the ITraceListener. Then we copy the
-			 * stream to the request stream.
-			 */
+            /*
+             * If tracing is enabled, we generate the request in-memory so that
+             * we can pass it along to the ITraceListener. Then we copy the
+             * stream to the request stream.
+             */
 
             ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
 
@@ -747,9 +755,7 @@ abstract class ServiceRequestBase {
                     EwsUtilities.copyStream(memoryStream, serviceRequestStream);
                 }
 
-            }
-
-            else {
+            } else {
                 ByteArrayOutputStream requestStream = this.getWebRequestStream(task);
 
                 EwsServiceXmlWriter writer1 = new EwsServiceXmlWriter(this.getService(), requestStream);
@@ -758,17 +764,8 @@ abstract class ServiceRequestBase {
 
             }
 
-            return outparam;
-        }
-        catch (HTTPException e) {
-            if (e.getStatusCode() == WebExceptionStatus.ProtocolError.ordinal() && e.getCause() != null) {
-                this.processWebException(e, outparam.getParam());
-            }
-
-            // Wrap exception if the above code block didn't throw
-            throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
-        }
-        catch (IOException e) {
+            return request;
+        } catch (IOException e) {
             // Wrap exception.
             throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
         }
@@ -780,24 +777,16 @@ abstract class ServiceRequestBase {
      * @param request The specified HttpWebRequest
      * @returns An HttpWebResponse instance
      */
-    protected HttpWebRequest getEwsHttpWebResponse(OutParam<HttpWebRequest> outparam) throws Exception {
-        HttpWebRequest request = outparam.getParam();
-        int code;
-
+    protected HttpWebRequest getEwsHttpWebResponse(HttpWebRequest request) throws Exception {
         try {
+            request.executeRequest();
 
-            code = request.executeRequest();
-
-        }
-        catch (HttpErrorException ex) {
-            if (ex.getHttpErrorCode() == WebExceptionStatus.ProtocolError.ordinal() && ex.getMessage() != null) {
-                this.processWebException(ex, request);
+            if (request.getResponseCode() >= 400) {
+                throw new HttpErrorException(
+                        "The remote server returned an error: (" + request.getResponseCode() + ")" +
+                                request.getResponseText(), request.getResponseCode());
             }
-
-            // Wrap exception if the above code block didn't throw
-            throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, ex.getMessage()), ex);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             // Wrap exception.
             throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
         }
