@@ -21,6 +21,8 @@ import java.util.zip.InflaterInputStream;
  */
 abstract class ServiceRequestBase {
 
+    private FailedRequestLogger failedRequestLogger = new FailedRequestLogger();
+
     // Private Constants
     // private final String XMLSchemaNamespace =
     // "http://www.w3.org/2001/XMLSchema";
@@ -409,7 +411,7 @@ abstract class ServiceRequestBase {
      * @throws EWSHttpException the eWS http exception
      * @throws IOException      Signals that an I/O exception has occurred.
      */
-    private static InputStream getResponseErrorStream(HttpWebRequest request) throws EWSHttpException, IOException {
+    public static InputStream getResponseErrorStream(HttpWebRequest request) throws EWSHttpException, IOException {
         String contentEncoding = "";
 
         if (null != request.getContentEncoding()) {
@@ -531,89 +533,92 @@ abstract class ServiceRequestBase {
     }
 
     /**
-     * * Processes the web exception.
+     * Processes the web exception.
      *
      * @param webException The web exception.
      * @param req          http Request object used to send the http request.
      * @throws Exception
-     * @throws Exception
      */
     protected void processWebException(Exception webException, HttpWebRequest req) throws Exception {
-        SoapFaultDetails soapFaultDetails = null;
         if (null != req) {
             this.getService().processHttpResponseHeaders(TraceFlags.EwsResponseHttpHeaders, req);
-            if (500 == req.getResponseCode()) {
-                if (this.service.isTraceEnabledFor(TraceFlags.EwsResponse)) {
-                    ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
-                    InputStream serviceResponseStream = ServiceRequestBase.getResponseErrorStream(req);
-                    while (true) {
-                        int data = serviceResponseStream.read();
-                        if (-1 == data) {
-                            break;
-                        }
-                        else {
-                            memoryStream.write(data);
-                        }
-                    }
-                    memoryStream.flush();
-                    serviceResponseStream.close();
-                    this.traceResponse(req, memoryStream);
-                    ByteArrayInputStream memoryStreamIn = new ByteArrayInputStream(memoryStream.toByteArray());
-                    EwsServiceXmlReader reader = new EwsServiceXmlReader(memoryStreamIn, this.service);
-                    soapFaultDetails = this.readSoapFault(reader);
-                    memoryStream.close();
-                }
-                else {
-                    InputStream serviceResponseStream = ServiceRequestBase.getResponseStream(req);
-                    EwsServiceXmlReader reader = new EwsServiceXmlReader(serviceResponseStream, this.service);
-                    soapFaultDetails = this.readSoapFault(reader);
-                    serviceResponseStream.close();
 
-                }
-
-                if (soapFaultDetails != null) {
-                    switch (soapFaultDetails.getResponseCode()) {
-                        case ErrorInvalidServerVersion:
-                            throw new ServiceVersionException(Strings.ServerVersionNotSupported);
-
-                        case ErrorSchemaValidation:
-                            // If we're talking to an E12 server
-                            // (8.00.xxxx.xxx), a schema
-                            // validation error is the same as
-                            // a version mismatch error.
-                            // (Which only will happen if we
-                            // send a request that's not valid
-                            // for E12).
-                            if ((this.service.getServerInfo() != null) &&
-                                    (this.service.getServerInfo().getMajorVersion() == 8) &&
-                                    (this.service.getServerInfo().getMinorVersion() == 0)) {
-                                throw new ServiceVersionException(Strings.ServerVersionNotSupported);
-                            }
-
-                            break;
-
-                        case ErrorIncorrectSchemaVersion:
-                            // This shouldn't happen. It
-                            // indicates that a request wasn't
-                            // valid for the version that was specified.
-                            EwsUtilities.EwsAssert(false, "ServiceRequestBase.ProcessWebException",
-                                    "Exchange server supports " + "requested version " +
-                                            "but request was invalid for that version");
-                            break;
-
-                        default:
-                            // Other error codes will
-                            // be reported as remote error
-                            break;
-                    }
-
-                    // General fall-through case:
-                    // throw a ServiceResponseException
-                    throw new ServiceResponseException(new ServiceResponse(soapFaultDetails));
+            ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
+            InputStream serviceResponseStream = ServiceRequestBase.getResponseErrorStream(req);
+            while (true) {
+                int data = serviceResponseStream.read();
+                if (-1 == data) {
+                    break;
+                } else {
+                    memoryStream.write(data);
                 }
             }
-            else {
-                this.service.processHttpErrorResponse(req, webException);
+            memoryStream.flush();
+            serviceResponseStream.close();
+
+            failedRequestLogger.setRequest(req);
+
+            ByteArrayOutputStream failedRequestLoggerStream = new ByteArrayOutputStream();
+            EwsUtilities.copyStream(memoryStream, failedRequestLoggerStream);
+            failedRequestLogger.setResponseBodyStream(failedRequestLoggerStream);
+            failedRequestLogger.log();
+            failedRequestLoggerStream.close();
+
+            try {
+                if (500 == req.getResponseCode()) {
+                    if (this.service.isTraceEnabledFor(TraceFlags.EwsResponse)) {
+                        this.traceResponse(req, memoryStream);
+                    }
+
+                    ByteArrayInputStream memoryStreamIn = new ByteArrayInputStream(memoryStream.toByteArray());
+                    EwsServiceXmlReader reader = new EwsServiceXmlReader(memoryStreamIn, this.service);
+                    SoapFaultDetails soapFaultDetails = this.readSoapFault(reader);
+
+                    if (soapFaultDetails != null) {
+                        switch (soapFaultDetails.getResponseCode()) {
+                            case ErrorInvalidServerVersion:
+                                throw new ServiceVersionException(Strings.ServerVersionNotSupported);
+
+                            case ErrorSchemaValidation:
+                                // If we're talking to an E12 server
+                                // (8.00.xxxx.xxx), a schema
+                                // validation error is the same as
+                                // a version mismatch error.
+                                // (Which only will happen if we
+                                // send a request that's not valid
+                                // for E12).
+                                if ((this.service.getServerInfo() != null) &&
+                                        (this.service.getServerInfo().getMajorVersion() == 8) &&
+                                        (this.service.getServerInfo().getMinorVersion() == 0)) {
+                                    throw new ServiceVersionException(Strings.ServerVersionNotSupported);
+                                }
+
+                                break;
+
+                            case ErrorIncorrectSchemaVersion:
+                                // This shouldn't happen. It
+                                // indicates that a request wasn't
+                                // valid for the version that was specified.
+                                EwsUtilities.EwsAssert(false, "ServiceRequestBase.ProcessWebException",
+                                        "Exchange server supports " + "requested version " +
+                                                "but request was invalid for that version");
+                                break;
+
+                            default:
+                                // Other error codes will
+                                // be reported as remote error
+                                break;
+                        }
+
+                        // General fall-through case:
+                        // throw a ServiceResponseException
+                        throw new ServiceResponseException(new ServiceResponse(soapFaultDetails));
+                    }
+                } else {
+                    this.service.processHttpErrorResponse(req, webException);
+                }
+            } finally {
+                memoryStream.close();
             }
         }
     }
@@ -712,7 +717,7 @@ abstract class ServiceRequestBase {
      * @returns An IEwsHttpWebRequest instance
      */
     protected HttpWebRequest buildEwsHttpWebRequest() throws Exception {
-        HttpWebRequest request = null;
+        HttpWebRequest request;
 
         try {
             request = this.getService().prepareHttpWebRequest();
@@ -726,11 +731,11 @@ abstract class ServiceRequestBase {
 
             boolean needSignature =
                     this.getService().getCredentials() != null && this.getService().getCredentials().isNeedSignature();
+
             boolean needTrace = this.getService().isTraceEnabledFor(TraceFlags.EwsRequest);
 
             /*
-             * If tracing is enabled, we generate the request in-memory so that
-             * we can pass it along to the ITraceListener. Then we copy the
+             * We generate the request in-memory so that we can pass it along to the ITraceListener. Then we copy the
              * stream to the request stream.
              */
 
@@ -741,28 +746,18 @@ abstract class ServiceRequestBase {
             writer.setRequireWSSecurityUtilityNamespace(needSignature);
             this.writeToXml(writer);
 
-            if (needSignature || needTrace) {
-                if (needSignature) {
-                    this.service.getCredentials().sign(memoryStream);
-                }
-
-                if (needTrace) {
-                    this.getService().traceXml(TraceFlags.EwsRequest, memoryStream);
-                }
-
-                ByteArrayOutputStream serviceRequestStream = (ByteArrayOutputStream) this.getWebRequestStream(task);
-                {
-                    EwsUtilities.copyStream(memoryStream, serviceRequestStream);
-                }
-
-            } else {
-                ByteArrayOutputStream requestStream = this.getWebRequestStream(task);
-
-                EwsServiceXmlWriter writer1 = new EwsServiceXmlWriter(this.getService(), requestStream);
-
-                this.writeToXml(writer1);
-
+            if (needSignature) {
+                this.service.getCredentials().sign(memoryStream);
             }
+
+            if (needTrace) {
+                this.getService().traceXml(TraceFlags.EwsRequest, memoryStream);
+            }
+
+            failedRequestLogger.setRequestBodyStream(memoryStream);
+
+            ByteArrayOutputStream requestStream = this.getWebRequestStream(task);
+            EwsUtilities.copyStream(memoryStream, requestStream);
 
             return request;
         } catch (IOException e) {
@@ -821,5 +816,4 @@ abstract class ServiceRequestBase {
             throw new ServiceRequestException(Strings.ServiceResponseDoesNotContainXml, ex);
         }
     }
-
 }
