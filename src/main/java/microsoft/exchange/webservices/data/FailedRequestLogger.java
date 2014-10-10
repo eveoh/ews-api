@@ -33,53 +33,51 @@ public class FailedRequestLogger {
     }
 
     public void log() {
-        logger.warn("Request to EWS failed. Here is the request trace:");
-
-        logRequestHeaders();
-        logRequestBody();
-        logResponseHeaders();
-        logResponseBody();
+        logger.warn("Request to EWS failed. Trace:\n" + requestHeaders() + '\n' + requestBody() + '\n'
+                + responseHeaders() + '\n' + responseBody());
     }
 
-    private void logRequestHeaders() {
+    private String requestHeaders() {
         if (request != null) {
             try {
                 String headers = EwsUtilities.formatHttpRequestHeaders(request);
-                logger.warn(EwsUtilities.formatLogMessage(TraceFlags.EwsRequestHttpHeaders.toString(), headers));
+                return EwsUtilities.formatLogMessage(TraceFlags.EwsRequestHttpHeaders.toString(), headers);
             } catch (EWSHttpException | XMLStreamException | IOException | URISyntaxException e) {
                 logger.warn("Could not log request headers of failed request.", e);
+                return "Could not log request headers of failed request.";
             }
-        } else {
-            logger.warn("Could not log request headers, since the request hasn't been set.");
         }
+
+        return "Could not log request headers, since the request hasn't been set.";
     }
 
-    private void logRequestBody() {
+    private String requestBody() {
         if (requestBodyStream != null) {
-            logger.warn(EwsUtilities.formatLogMessageWithXmlContent(TraceFlags.EwsRequest.toString(), requestBodyStream));
-        } else {
-            logger.warn("Could not log request body of failed request, since the stream hasn't been set.");
+            return EwsUtilities.formatLogMessageWithXmlContent(TraceFlags.EwsRequest.toString(), requestBodyStream);
         }
+
+        return "Could not log request body of failed request, since the stream hasn't been set.";
     }
 
-    private void logResponseHeaders() {
+    private String responseHeaders() {
         if (request != null) {
             try {
                 String headers = EwsUtilities.formatHttpResponseHeaders(request);
-                logger.warn(EwsUtilities.formatLogMessage(TraceFlags.EwsResponseHttpHeaders.toString(), headers));
+                return EwsUtilities.formatLogMessage(TraceFlags.EwsResponseHttpHeaders.toString(), headers);
             } catch (EWSHttpException | IOException | XMLStreamException e) {
                 logger.warn("Could not log response headers.", e);
+                return "Could not log response headers.";
             }
-        } else {
-            logger.warn("Could not log response headers, since the request hasn't been set.");
         }
+
+        return "Could not log response headers, since the request hasn't been set.";
     }
 
-    private void logResponseBody() {
+    private String responseBody() {
         if (responseBodyStream != null) {
-            logger.warn(EwsUtilities.formatLogMessageWithXmlContent(TraceFlags.EwsResponse.toString(), responseBodyStream));
-        } else {
-            logger.warn("Could not log response body of failed request, since the stream hasn't been set.");
+            return EwsUtilities.formatLogMessageWithXmlContent(TraceFlags.EwsResponse.toString(), responseBodyStream);
         }
+
+        return "Could not log response body of failed request, since the stream hasn't been set.";
     }
 }
