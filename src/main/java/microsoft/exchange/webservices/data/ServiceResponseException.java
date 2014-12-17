@@ -6,6 +6,8 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
+import java.util.Map;
+
 /**
  * Represents a remote service exception that has a single response.
  */
@@ -26,6 +28,10 @@ public class ServiceResponseException extends ServiceRemoteException {
      * The Stack trace key.
      */
     private static final String StackTraceKey = "StackTrace";
+
+    private static final String InnerErrorResponseCodeKey = "InnerErrorResponseCode";
+    private static final String InnerErrorMessageTextKey = "InnerErrorMessageText";
+
 
     /**
      * ServiceResponse when service operation failed remotely.
@@ -64,30 +70,31 @@ public class ServiceResponseException extends ServiceRemoteException {
      *
      * @return The error message that explains the reason for the exception.
      */
-
     public String getMessage() {
+        StringBuilder builder = new StringBuilder(response.getErrorMessage());
 
-        // Bug E14:134792 -- Special case for Internal Server Error. If the
-        // server returned
-        // stack trace information, include it in the exception message.
-        if (this.response.getErrorCode() == ServiceError.ErrorInternalServerError) {
-            String exceptionClass;
-            String exceptionMessage;
-            String stackTrace;
+        Map<String, String> errorDetails = response.getErrorDetails();
 
-            if (this.response.getErrorDetails().containsKey(ExceptionClassKey) &&
-                    this.response.getErrorDetails().containsKey(ExceptionMessageKey) &&
-                    this.response.getErrorDetails().containsKey(StackTraceKey)) {
-                exceptionClass = this.response.getErrorDetails().get(ExceptionClassKey);
-                exceptionMessage = this.response.getErrorDetails().get(ExceptionMessageKey);
-                stackTrace = this.response.getErrorDetails().get(StackTraceKey);
+        if (errorDetails.containsKey(InnerErrorResponseCodeKey) && errorDetails.containsKey(InnerErrorMessageTextKey)) {
+            builder.append(" (InnerErrorResponseCode: ").append(errorDetails.get(InnerErrorResponseCodeKey))
+                    .append(", InnerErrorMessageText: ").append(errorDetails.get(InnerErrorMessageTextKey)).append(')');
+        }
 
-                // return
-                return String.format(Strings.ServerErrorAndStackTraceDetails, this.response.getErrorMessage(),
-                        exceptionClass, exceptionMessage, stackTrace);
+        if (response.getErrorCode() == ServiceError.ErrorInternalServerError) {
+            // Bug E14:134792 -- Special case for Internal Server Error.
+            // If the server returned stack trace information, include it in the exception message.
+            if (errorDetails.containsKey(ExceptionClassKey) &&
+                    errorDetails.containsKey(ExceptionMessageKey) &&
+                    errorDetails.containsKey(StackTraceKey)) {
+                String exceptionClass = errorDetails.get(ExceptionClassKey);
+                String exceptionMessage = errorDetails.get(ExceptionMessageKey);
+                String stackTrace = errorDetails.get(StackTraceKey);
+
+                return String.format(Strings.ServerErrorAndStackTraceDetails, builder.toString(), exceptionClass,
+                        exceptionMessage, stackTrace);
             }
         }
 
-        return this.response.getErrorMessage();
+        return builder.toString();
     }
 }
